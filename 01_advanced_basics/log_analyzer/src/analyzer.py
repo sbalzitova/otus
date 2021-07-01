@@ -1,41 +1,36 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
 from .reader import LogReader
 from .log import Log
 import json
 from .monitoring import monitoring
-from os import listdir, makedirs, replace, rename
+from os import makedirs, path
 from collections import OrderedDict
-import datetime
+from string import Template
+from json.decoder import JSONDecodeError
 
 
 class LogAnalyzer:
-    def __init__(self, config_file='./default_config.json'):
+    def __init__(self, config_file):
         self.config_file = config_file
-        self.report_size = None
-        self.report_dir = None
-        self.log_dir = None
-        self.is_report_new = True
-        self.reader = LogReader()
+        self.report_size = 1000
+        self.report_dir = './reports'
+        self.log_dir = './log'
+        self.reader = None
         self.log = Log()
 
-        self._parse_config()
-        self._create_directories()
-        self._is_report_new()
-
-    def _create_directories(self):
+    def create_directories(self):
         makedirs(self.report_dir, exist_ok=True)
-        makedirs(self.log_dir, exist_ok=True)
 
-    def _is_report_new(self):
-        for f in listdir(self.report_dir):
-            if self.reader.report_date in f:
-                self.is_report_new = False
+    def is_report_new(self):
+        return path.isdir('{}/report-{}.html'.format(self.report_dir, self.reader.report_date))
 
-    def _parse_config(self):
-        with open(self.config_file, 'r') as d:
-            d = json.load(d)
-            config_json = d
+    def parse_config(self):
+
+        path_to_config = path.join(path.dirname(__file__)[:-3], self.config_file)
+        with open(path_to_config, 'r') as d:
+            try:
+                config_json = json.load(d)
+            except JSONDecodeError:
+                config_json = {}
 
         if config_json.get('REPORT_SIZE'):
             self.report_size = config_json['REPORT_SIZE']
@@ -48,8 +43,9 @@ class LogAnalyzer:
 
     @monitoring
     def parse_log(self):
+        is_new = self.is_report_new()
 
-        if self.is_report_new:
+        if is_new:
             log_reader = self.reader.read_file()
 
             for line in log_reader:
@@ -67,7 +63,7 @@ class LogAnalyzer:
 
             if non_parsed_log < 80:
                 self.log.update_overall_percentages()
-                self._form_report()
+                self.form_report()
 
             else:
                 return '{}% of the log cannot be processed, please check if format has changed or file missed'\
@@ -77,7 +73,7 @@ class LogAnalyzer:
             return 'Report for {} has already been created, check {}'.format(self.reader.report_date, self.report_dir)
 
     @monitoring
-    def _form_report(self):
+    def form_report(self):
         if self.is_report_new and self.log.data:
             report_data = []
             ordered_data = OrderedDict(sorted(self.log.data.items(), key=lambda q: -q[1]['time_sum']))
@@ -90,20 +86,18 @@ class LogAnalyzer:
                 if self.report_size == 0:
                     break
 
-            report_file = self.report_dir + '/report-{}.html'.format(self.reader.report_date)
+            report_file = path.join(self.report_dir, 'report-{}.html'.format(self.reader.report_date))
 
-            with open(report_file, 'w') as target:
-                with open('report.html', 'r') as source:
+            with open('report.html', 'r') as source:
+                text = source.read()
+                template = Template(text)
 
-                    for line in source:
-                        if '$table_json' in line:
-                            target.write('    var table = {};'.format(report_data))
-                        else:
-                            target.write(line)
-
-    def move_monitoring_log(self):
-        replace('monitoring.txt', self.log_dir + '/monitoring-{}.txt'.format(datetime.datetime.now()))
+                with open(report_file, 'w+') as target:
+                    target.write(template.safe_substitute(table_json=report_data))
 
     def start(self):
+        self.parse_config()
+        self.reader = LogReader(self.log_dir)
+        self.create_directories()
         self.parse_log()
-        self.move_monitoring_log()
+        self.form_report()

@@ -5,7 +5,7 @@ import argparse
 
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--config', type=str, default='default_config.json', help='Config file for your log analyzer')
+parser.add_argument('--config', type=str, help='Config file for your log analyzer')
 args = parser.parse_args()
 
 

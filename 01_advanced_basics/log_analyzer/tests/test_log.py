@@ -139,8 +139,6 @@ class TestLog(unittest.TestCase):
 
         rounded_count_perc_some_url = round(self.log.data['some_url']['count_perc'], 3)
         rounded_count_perc_another_url = round(self.log.data['another_url']['count_perc'], 3)
-        print(rounded_count_perc_some_url)
-        print(rounded_count_perc_another_url)
 
         assert rounded_count_perc_some_url == 57.143 and rounded_count_perc_another_url == 42.857
 
@@ -162,8 +160,6 @@ class TestLog(unittest.TestCase):
 
         rounded_time_perc_some_url = round(self.log.data['some_url']['time_perc'], 3)
         rounded_time_perc_another_url = round(self.log.data['another_url']['time_perc'], 3)
-        print(rounded_time_perc_another_url)
-        print(rounded_time_perc_some_url)
 
         assert rounded_time_perc_some_url == 61.905 and rounded_time_perc_another_url == 38.095
 

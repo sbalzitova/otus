@@ -1,0 +1,4 @@
+{
+    "REPORT_DIR": "./reports_path",
+    "LOG_DIR": "./log_path"
+}

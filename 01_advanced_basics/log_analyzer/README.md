@@ -13,14 +13,18 @@ cd log_analyzer
 python3 main.py
 ```
 
-- If you gave your own config, provide it as an argument
+- If you have your own config, provide it as an argument
 ```shell
 python3 main.py --config /pah/to/config.json
 ```
 
 ## Monitor script performance
 
-By default the log on script actions is stored in ./log directory, it can be redefined via config
+Log on script actions -monitoring.txt- is stored in project root
+
+## Provide logs for analysis 
+
+By default the logs are expected to be in ./log directory, it can be redefined via config
 
 ## Enjoy the report
 

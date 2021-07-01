@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
 from .monitoring import monitoring
 
 
@@ -25,9 +23,9 @@ class Log:
                 'all_request_times': []
             }
 
-        self._calculations(url, request_time)
+        self.calculations(url, request_time)
 
-    def _calculations(self, url, r_t):
+    def calculations(self, url, r_t):
         self.data[url]['count'] += 1
 
         try:
@@ -38,30 +36,30 @@ class Log:
 
         self.data[url]['all_request_times'].append(request_time)
         self.data[url]['time_sum'] += request_time
-        self.data[url]['time_max'] = self._calc_time_max(url, request_time)
-        self.data[url]['time_avg'] = self._calc_time_avg(url)
-        self.data[url]['time_med'] = self._calc_time_med(url)
+        self.data[url]['time_max'] = self.calc_time_max(url, request_time)
+        self.data[url]['time_avg'] = self.calc_time_avg(url)
+        self.data[url]['time_med'] = self.calc_time_med(url)
 
         self.all_count += 1
         self.all_time += request_time
 
-    def _calc_time_avg(self, url):
+    def calc_time_avg(self, url):
         return self.data[url]['time_sum'] / self.data[url]['count']
 
-    def _calc_time_max(self, url, request_time):
+    def calc_time_max(self, url, request_time):
         return request_time if request_time > self.data[url]['time_max'] else self.data[url]['time_max']
 
-    def _calc_time_med(self, url):
+    def calc_time_med(self, url):
         sorted_arr = sorted(self.data[url]['all_request_times'])
         arr_len = len(sorted_arr)
         return sorted_arr[int(arr_len / 2)]
 
-    def _calc_count_percent(self, url):
+    def calc_count_percent(self, url):
         url_count = self.data[url]['count']
         percent = (url_count * 100) / self.all_count
         self.data[url]['count_perc'] = percent
 
-    def _calc_time_percent(self, url):
+    def calc_time_percent(self, url):
         url_time = self.data[url]['time_sum']
         percent = (url_time * 100) / self.all_time
         self.data[url]['time_perc'] = percent
@@ -69,5 +67,5 @@ class Log:
     @monitoring
     def update_overall_percentages(self):
         for url in self.data:
-            self._calc_count_percent(url)
-            self._calc_time_percent(url)
+            self.calc_count_percent(url)
+            self.calc_time_percent(url)
