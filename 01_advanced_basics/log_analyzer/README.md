@@ -33,5 +33,5 @@ By default the report.html is stored in ./reports directory, it can be redefined
 ### Testing
 Staying in the project root run
 ```shell
-python3 -m unittest discover tests
+python3 -m unittest
 ```

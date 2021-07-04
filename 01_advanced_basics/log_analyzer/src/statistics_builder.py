@@ -1,14 +1,9 @@
-from .monitoring import monitoring
-
-
-class Log:
+class StatisticsBuilder:
     def __init__(self):
         self.data = {}
         self.all_count = 0
         self.all_time = 0
-        self.error_count = 0
 
-    @monitoring
     def register_url(self, url, request_time):
         if not self.data.get(url):
             self.data[url] = {
@@ -22,7 +17,6 @@ class Log:
                 'count_perc': 0,
                 'all_request_times': []
             }
-
         self.calculations(url, request_time)
 
     def calculations(self, url, r_t):
@@ -64,7 +58,6 @@ class Log:
         percent = (url_time * 100) / self.all_time
         self.data[url]['time_perc'] = percent
 
-    @monitoring
     def update_overall_percentages(self):
         for url in self.data:
             self.calc_count_percent(url)

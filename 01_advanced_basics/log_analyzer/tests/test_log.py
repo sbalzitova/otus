@@ -1,9 +1,9 @@
 import unittest
-from src.log import Log
+from src.statistics_builder import StatisticsBuilder
 
 
 class TestLog(unittest.TestCase):
-    log = Log()
+    log = StatisticsBuilder()
 
     def test_count(self):
         self.log.data = {
