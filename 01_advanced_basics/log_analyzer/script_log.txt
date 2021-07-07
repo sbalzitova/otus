@@ -1,0 +1,2 @@
+2021.07.07 15:55:55,854 root INFO Report for 2018-06-30 has already been created, check ./log
+2021.07.07 15:56:03,987 root INFO Analysis completed
