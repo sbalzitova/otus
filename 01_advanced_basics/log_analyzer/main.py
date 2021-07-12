@@ -17,30 +17,28 @@ logging.basicConfig(filename='script_log.txt',
                     level=logging.INFO)
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--config', type=str, help='Config file for your log report_builder')
+parser.add_argument('--config', type=str, help='Config file for your log')
 args = parser.parse_args()
 
-
-def parse_config(config_file):
-    path_to_config = path.join(path.dirname(__file__), config_file)
-
-    default_config = {
+default_config = {
         "REPORT_SIZE": 1000,
         "REPORT_DIR": "./reports",
         "LOG_DIR": "./log"
     }
 
-    def open_config_file(file):
-        with open(file, 'r') as d:
-            try:
-                config_json = json.load(d)
-            except JSONDecodeError:
-                return None
-        return config_json
 
-    config = open_config_file(path_to_config)
-    default_config.update(config)
-    return default_config
+def parse_config(config_file):
+    path_to_config = path.join(path.dirname(__file__), config_file)
+
+    with open(path_to_config, 'r') as d:
+        try:
+            config = json.load(d)
+        except JSONDecodeError:
+            config = None
+
+    merged_config = default_config.copy()
+    merged_config.update(config)
+    return merged_config
 
 
 def find_latest_file(file_dir):
@@ -63,7 +61,11 @@ def find_latest_file(file_dir):
                 max_file_name = file_name
 
     if max_date:
-        report_date = datetime.datetime.strptime(max_date, '%Y%m%d').date()
+        try:
+            report_date = datetime.datetime.strptime(max_date, '%Y%m%d').date()
+        except ValueError:
+            logging.exception('Log date cannot be parsed')
+            report_date = None
 
     return max_file_name, report_date
 
@@ -97,19 +99,18 @@ def parse_log(log_generator):
     return url_time_map, parsed_log_percentage
 
 
-def form_report(statistics, report_date, report_dir, report_size):
+def form_report(statistics, date, report_dir, size):
     makedirs(report_dir, exist_ok=True)
 
-    if statistics.data:
-        ordered_data = sorted(statistics.data.values(), key=lambda i: i['time_avg'], reverse=True)
-        report_file = path.join(report_dir, 'report-{}.html'.format(report_date))
+    ordered_data = sorted(statistics.data.values(), key=lambda i: i['time_avg'], reverse=True)
+    report_file = path.join(report_dir, 'report-{}.html'.format(date))
 
-        with open('report.html', 'r') as source:
-            text = source.read()
-            template = Template(text)
+    with open('report.html', 'r') as source:
+        text = source.read()
+        template = Template(text)
 
-            with open(report_file, 'w+') as target:
-                target.write(template.safe_substitute(table_json=ordered_data[:report_size]))
+        with open(report_file, 'w+') as target:
+            target.write(template.safe_substitute(table_json=ordered_data[:size]))
 
 
 def main():
@@ -133,23 +134,26 @@ def main():
                                               report_dir,
                                               'report-{}.html'.format(log_date)))
 
-    if not is_report_created:
-        url_time, parsed_percentage = parse_log(log_generator)
+    if is_report_created:
+        logging.info('Report for {} has already been created, check {}'.format(log_date, log_dir))
+        return
 
-        if parsed_percentage > 80:
-            logging.error('{}% of the log cant be processed, check if format changed '
-                          'or file missed'.format(parsed_percentage))
+    url_time, parsed_percentage = parse_log(log_generator)
 
-        else:
-            for url_time_pair in url_time:
-                statistics.register_url(*url_time_pair)
-
-        form_report(statistics, log_date, report_dir, report_size)
-        logging.info('Analysis completed')
+    if parsed_percentage > 80:
+        logging.error('{}% of the log cant be processed, check if format changed '
+                      'or file missed'.format(parsed_percentage))
 
     else:
-        logging.info('Report for {} has already been created, check {}'.format(log_date, log_dir))
+        for url_time_pair in url_time:
+            statistics.register_url(*url_time_pair)
+
+    form_report(statistics, log_date, report_dir, report_size)
+    logging.info('Analysis completed')
 
 
 if __name__ == '__main__':
-    main()
+    try:
+        main()
+    except Exception as e:
+        logging.exception('Program stopped due to {}'.format(e))
