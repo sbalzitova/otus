@@ -29,15 +29,15 @@ default_config = {
 
 def parse_config(config_file):
     path_to_config = path.join(path.dirname(__file__), config_file)
+    merged_config = default_config.copy()
 
     with open(path_to_config, 'r') as d:
         try:
             config = json.load(d)
+            merged_config.update(config)
         except JSONDecodeError:
-            config = None
+            logging.exception('Provided config file is invalid, gonna use default')
 
-    merged_config = default_config.copy()
-    merged_config.update(config)
     return merged_config
 
 
@@ -65,7 +65,6 @@ def find_latest_file(file_dir):
             report_date = datetime.datetime.strptime(max_date, '%Y%m%d').date()
         except ValueError:
             logging.exception('Log date cannot be parsed')
-            report_date = None
 
     return max_file_name, report_date
 

@@ -17,9 +17,9 @@ class StatisticsBuilder:
                 'count_perc': 0,
                 'all_request_times': []
             }
-        self.calculations(url, request_time)
+        self.calculate_stats(url, request_time)
 
-    def calculations(self, url, r_t):
+    def calculate_stats(self, url, r_t):
         self.data[url]['count'] += 1
 
         try:
