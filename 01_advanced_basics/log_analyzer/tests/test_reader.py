@@ -8,6 +8,10 @@ class TestReader(unittest.TestCase):
         file, date = find_latest_file('tests/test_data/reader/test_date')
         assert file == 'nginx-access-ui.log-20210202.gz'
 
+    def test_invalid_date(self):
+        file, date = find_latest_file('tests/test_data/reader/test_invalid_date')
+        assert file is None and date is None
+
     def test_empty_dir(self):
         file, date = find_latest_file('tests/test_data/reader')
         assert file is None
