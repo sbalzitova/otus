@@ -141,12 +141,11 @@ def main():
     url_time, parsed_percentage = parse_log(log_generator)
 
     if parsed_percentage > 80:
-        logging.error('{}% of the log cant be processed, check if format changed '
-                      'or file missed'.format(parsed_percentage))
+        logging.error('{}% of the log cant be processed, check if format changed or file missed'.format(parsed_percentage))
+        return
 
-    else:
-        for url_time_pair in url_time:
-            statistics.register_url(*url_time_pair)
+    for url_time_pair in url_time:
+        statistics.register_url(*url_time_pair)
 
     form_report(statistics, log_date, report_dir, report_size)
     logging.info('Analysis completed')
