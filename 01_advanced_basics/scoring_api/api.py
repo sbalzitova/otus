@@ -55,13 +55,13 @@ class ClientsInterestsRequest(Model):
 class OnlineScoreRequest(Model):
     def __init__(self, **kwargs):
         super(Model, self).__init__()
-        self.fields = self.__class__.__dict__
+        self.fields = [f for f in self.__class__.__dict__ if isinstance(f, Field)]
         self.values = kwargs
 
         for k, v in self.values.items():
             if k in self.fields:
-                self.fields[k].value = self.values[k]
-                print(self.fields[k].value)
+                print(self.fields[k])
+                self.fields[k] = self.values[k]
 
     def __get__(self, instance, owner):
         return self.values
@@ -76,13 +76,13 @@ class OnlineScoreRequest(Model):
 
         found_combinations = []
 
-        for k, v in self.fields.items():
+        for field in self.fields:
 
-            if isinstance(v, Field) and v.value:
-                if combinations.get(k) in found_combinations:
+            if field.value:
+                if combinations.get(field) in found_combinations:
                     return True
                 else:
-                    found_combinations.append(k)
+                    found_combinations.append(field)
         return False
 
     first_name = CharField(required=False, nullable=True)
@@ -126,6 +126,7 @@ def method_handler(request, ctx, store):
         arguments = modeled_request.values.get('arguments') or {}
 
         modeled_arguments = OnlineScoreRequest(**arguments)
+        print(modeled_arguments.last_name)
 
         if not modeled_request.values or not login or method != 'online_score':
             code = INVALID_REQUEST

@@ -15,7 +15,7 @@ class Field:
         return self.value
 
     def __set__(self, instance, value):
-        if self.is_valid(value):
+        if instance.is_valid(value):
             print('im used')
             setattr(instance, self.value, value)
         else:
@@ -27,6 +27,7 @@ class Field:
 
 class CharField(Field):
     def is_valid(self, value):
+        print('validation goes on')
         if isinstance(value, str):
             return True
         return False
