@@ -34,34 +34,23 @@ GENDERS = {
 }
 
 
-class Model:
-    def __init__(self, **kwargs):
-        self.fields = self.__class__.__dict__
-        self.values = kwargs['body']
-
-        for k, v in self.values.items():
-            if k in self.fields:
-                self.fields[k].value = self.values[k]
-
-    def __get__(self, instance, item):
-        return self.values.get(item)
-
-
-class ClientsInterestsRequest(Model):
+class ClientsInterestsRequest:
     client_ids = ClientIDsField(required=True)
     date = DateField(required=False, nullable=True)
 
 
-class OnlineScoreRequest(Model):
+class OnlineScoreRequest:
     def __init__(self, **kwargs):
-        super(Model, self).__init__()
-        self.fields = [f for f in self.__class__.__dict__ if isinstance(f, Field)]
+        self.fields = {}
         self.values = kwargs
 
+        for k, v in self.__class__.__dict__.items():
+            if isinstance(v, Field):
+                self.fields[k] = v
+
         for k, v in self.values.items():
-            if k in self.fields:
-                print(self.fields[k])
-                self.fields[k] = self.values[k]
+            if k in self.fields.keys():
+                self.fields[k] = v
 
     def __get__(self, instance, owner):
         return self.values
@@ -76,9 +65,9 @@ class OnlineScoreRequest(Model):
 
         found_combinations = []
 
-        for field in self.fields:
+        for field, field_class in self.fields.items():
 
-            if field.value:
+            if field_class.value:
                 if combinations.get(field) in found_combinations:
                     return True
                 else:
@@ -86,6 +75,7 @@ class OnlineScoreRequest(Model):
         return False
 
     first_name = CharField(required=False, nullable=True)
+    print(first_name)
     last_name = CharField(required=False, nullable=True)
     email = EmailField(required=False, nullable=True)
     phone = PhoneField(required=False, nullable=True)
@@ -93,7 +83,18 @@ class OnlineScoreRequest(Model):
     gender = GenderField(required=False, nullable=True)
 
 
-class MethodRequest(Model):
+class MethodRequest:
+    def __init__(self, **kwargs):
+        self.fields = self.__class__.__dict__
+        self.values = kwargs['body']
+
+        for k, v in self.values.items():
+            if k in self.fields:
+                self.fields[k].value = self.values[k]
+
+    def __get__(self, instance, item):
+        return self.values.get(item)
+
     account = CharField(required=False, nullable=True)
     login = CharField(required=True, nullable=True)
     token = CharField(required=True, nullable=True)
@@ -126,7 +127,6 @@ def method_handler(request, ctx, store):
         arguments = modeled_request.values.get('arguments') or {}
 
         modeled_arguments = OnlineScoreRequest(**arguments)
-        print(modeled_arguments.last_name)
 
         if not modeled_request.values or not login or method != 'online_score':
             code = INVALID_REQUEST
