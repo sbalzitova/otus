@@ -50,7 +50,7 @@ class OnlineScoreRequest:
 
         for k, v in self.values.items():
             if k in self.fields.keys():
-                self.fields[k] = v
+                self.fields[k].value = v
 
     def __get__(self, instance, owner):
         return self.values
@@ -75,7 +75,6 @@ class OnlineScoreRequest:
         return False
 
     first_name = CharField(required=False, nullable=True)
-    print(first_name)
     last_name = CharField(required=False, nullable=True)
     email = EmailField(required=False, nullable=True)
     phone = PhoneField(required=False, nullable=True)

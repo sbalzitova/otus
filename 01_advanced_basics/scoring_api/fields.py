@@ -15,9 +15,10 @@ class Field:
         return self.value
 
     def __set__(self, instance, value):
+        print('im used')
         if instance:
-            if instance.is_valid(value):
-                instance.__dict__.value = value
+            if self.is_valid(value):
+                instance.__dict__['value'] = value
             else:
                 raise ValueError('{} has invalid value'.format(self.__class__.__name__))
 
