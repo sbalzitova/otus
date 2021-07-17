@@ -1,5 +1,13 @@
 import re
 import datetime
+import logging
+
+
+logging.basicConfig(filename='script_log.txt',
+                    filemode='a',
+                    format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',
+                    datefmt='%Y.%m.%d %H:%M:%S',
+                    level=logging.INFO)
 
 
 class Field:
@@ -15,12 +23,13 @@ class Field:
         return self.value
 
     def __set__(self, instance, value):
-        print('im used')
-        if instance:
-            if self.is_valid(value):
-                instance.__dict__['value'] = value
-            else:
-                raise ValueError('{} has invalid value'.format(self.__class__.__name__))
+        logging.debug('Using descriptor __set__ method')
+        if value is None and (self.required or self.nullable):
+            raise ValueError('{} cannot be null'.format(self.__class__.__name__))
+        elif self.is_valid(value):
+            self.value = value
+        else:
+            raise ValueError('{} has invalid value'.format(self.__class__.__name__))
 
     def __add__(self, other):
         return self.value + other.value
@@ -31,7 +40,7 @@ class CharField(Field):
         super(CharField, self).__init__(required, nullable)
 
     def is_valid(self, value):
-        print('validation goes on')
+        logging.debug('CharField validation goes on')
         if isinstance(value, str):
             return True
         return False
@@ -42,7 +51,7 @@ class ArgumentsField(Field):
         super(ArgumentsField, self).__init__(required, nullable)
 
     def is_valid(self, value):
-        print('validation goes on')
+        logging.debug('ArgumentsField validation goes on')
         if isinstance(value, dict):
             return True
         return False
@@ -53,7 +62,7 @@ class EmailField(CharField):
         super(EmailField, self).__init__(required, nullable)
 
     def is_valid(self, value):
-        print('validation goes on')
+        logging.debug('EmailField validation goes on')
         is_email = re.match(r'[\w]+@[\w]+', value)
         if is_email:
             return True
@@ -65,7 +74,7 @@ class PhoneField(Field):
         super(PhoneField, self).__init__(required, nullable)
 
     def is_valid(self, value):
-        print('validation goes on')
+        logging.debug('PhoneField validation goes on')
         is_phone = re.match(r'7\d{10}', str(value))
         if is_phone:
             return True

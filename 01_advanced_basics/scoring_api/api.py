@@ -4,9 +4,19 @@ import datetime
 import logging
 import hashlib
 import uuid
-from fields import *
+from fields import Field, CharField, EmailField, PhoneField, BirthDayField, DateField, ArgumentsField, \
+    ClientIDsField, GenderField
+from scoring import get_score, get_interests
 from optparse import OptionParser
 from http.server import HTTPServer, BaseHTTPRequestHandler
+
+
+logging.basicConfig(filename='script_log.txt',
+                    filemode='a',
+                    format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',
+                    datefmt='%Y.%m.%d %H:%M:%S',
+                    level=logging.INFO)
+
 
 SALT = "Otus"
 ADMIN_LOGIN = "admin"
@@ -34,15 +44,11 @@ GENDERS = {
 }
 
 
-class ClientsInterestsRequest:
-    client_ids = ClientIDsField(required=True)
-    date = DateField(required=False, nullable=True)
-
-
-class OnlineScoreRequest:
+class RequestParser:
     def __init__(self, **kwargs):
         self.fields = {}
         self.values = kwargs
+        self.has = {}
 
         for k, v in self.__class__.__dict__.items():
             if isinstance(v, Field):
@@ -50,12 +56,19 @@ class OnlineScoreRequest:
 
         for k, v in self.values.items():
             if k in self.fields.keys():
-                self.fields[k].value = v
+                self.fields[k].__set__(self, v)
 
     def __get__(self, instance, owner):
         return self.values
 
-    def if_required_fields_present(self):
+
+class ClientsInterestsRequest:
+    client_ids = ClientIDsField(required=True)
+    date = DateField(required=False, nullable=True)
+
+
+class OnlineScoreRequest(RequestParser):
+    def check_required_fields(self):
         combinations = {'phone': 'email',
                         'first_name': 'last_name',
                         'gender': 'birthday',
@@ -63,16 +76,17 @@ class OnlineScoreRequest:
                         'last_name': 'first_name',
                         'birthday': 'gender'}
 
-        found_combinations = []
+        if_required_fields_present = False
 
         for field, field_class in self.fields.items():
 
             if field_class.value:
-                if combinations.get(field) in found_combinations:
-                    return True
+                if combinations.get(field) in self.has.keys():
+                    if_required_fields_present = True
                 else:
-                    found_combinations.append(field)
-        return False
+                    self.has[field] = field_class.value
+
+        return if_required_fields_present, self.has
 
     first_name = CharField(required=False, nullable=True)
     last_name = CharField(required=False, nullable=True)
@@ -82,18 +96,7 @@ class OnlineScoreRequest:
     gender = GenderField(required=False, nullable=True)
 
 
-class MethodRequest:
-    def __init__(self, **kwargs):
-        self.fields = self.__class__.__dict__
-        self.values = kwargs['body']
-
-        for k, v in self.values.items():
-            if k in self.fields:
-                self.fields[k].value = self.values[k]
-
-    def __get__(self, instance, item):
-        return self.values.get(item)
-
+class MethodRequest(RequestParser):
     account = CharField(required=False, nullable=True)
     login = CharField(required=True, nullable=True)
     token = CharField(required=True, nullable=True)
@@ -115,19 +118,30 @@ def check_auth(request):
     return False
 
 
+def calc_online_score(fields):
+    return get_score(**fields)
+
+
+def calc_clients_interests(fields):
+    return get_interests(**fields)
+
+
 def method_handler(request, ctx, store):
     response, code = None, None
 
+    methods = {'online_score': calc_online_score,
+               'clients_interests': calc_clients_interests}
+
     try:
 
-        modeled_request = MethodRequest(**request)
+        modeled_request = MethodRequest(**request['body'])
         method = modeled_request.values.get('method')
         login = modeled_request.values.get('login')
         arguments = modeled_request.values.get('arguments') or {}
 
         modeled_arguments = OnlineScoreRequest(**arguments)
 
-        if not modeled_request.values or not login or method != 'online_score':
+        if not modeled_request.values or not login or method not in methods.keys():
             code = INVALID_REQUEST
 
         else:
@@ -135,17 +149,21 @@ def method_handler(request, ctx, store):
                 code = FORBIDDEN
 
             else:
-                is_required_fields_present = modeled_arguments.if_required_fields_present()
+                is_required_fields_present, found_fields = modeled_arguments.check_required_fields()
+                ctx.update({'has': found_fields})
+
                 if not is_required_fields_present:
                     code = INVALID_REQUEST
 
                 else:
+                    # response = methods[method](**found_fields)
                     code = OK
 
     except ValueError:
         code = INVALID_REQUEST
 
-    response = ERRORS.get(code)
+    if code != 200:
+        response = ERRORS.get(code)
 
     return response, code
 
