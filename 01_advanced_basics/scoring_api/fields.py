@@ -11,10 +11,10 @@ logging.basicConfig(filename='script_log.txt',
 
 
 class Field:
-    def __init__(self, value=None, required=False, nullable=True):
+    def __init__(self, required=False, nullable=True):
         self.required = required
         self.nullable = nullable
-        self.value = value
+        self.value = None
 
     def is_valid(self, *args):
         pass
@@ -29,7 +29,7 @@ class Field:
         elif self.is_valid(value):
             self.value = value
         else:
-            raise ValueError('{} has invalid value'.format(self.__class__.__name__))
+            raise ValueError('{} has invalid value {}'.format(self.__class__.__name__, self.value))
 
     def __add__(self, other):
         return self.value + other.value
@@ -86,10 +86,11 @@ class DateField(Field):
         super(DateField, self).__init__(required, nullable)
 
     def is_valid(self, value):
-        is_date = re.match(r'(?P<date>\d{6,8})', str(value))
-        if is_date:
-            return True
-        return False
+        try:
+            if datetime.datetime.strptime(value, "%d.%m.%Y").date():
+                return True
+        except ValueError:
+            return False
 
 
 class BirthDayField(Field):
@@ -127,6 +128,6 @@ class ClientIDsField(Field):
         super(ClientIDsField, self).__init__(required, nullable)
 
     def is_valid(self, value):
-        if isinstance(value, int):
+        if isinstance(value, list) and set([isinstance(v, int) for v in value]) == {True}:
             return True
         return False

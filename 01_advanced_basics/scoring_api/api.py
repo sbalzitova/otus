@@ -62,32 +62,12 @@ class RequestParser:
         return self.values
 
 
-class ClientsInterestsRequest:
+class ClientsInterestsRequest(RequestParser):
     client_ids = ClientIDsField(required=True)
     date = DateField(required=False, nullable=True)
 
 
 class OnlineScoreRequest(RequestParser):
-    def check_required_fields(self):
-        combinations = {'phone': 'email',
-                        'first_name': 'last_name',
-                        'gender': 'birthday',
-                        'email': 'phone',
-                        'last_name': 'first_name',
-                        'birthday': 'gender'}
-
-        if_required_fields_present = False
-
-        for field, field_class in self.fields.items():
-
-            if field_class.value:
-                if combinations.get(field) in self.has.keys():
-                    if_required_fields_present = True
-                else:
-                    self.has[field] = field_class.value
-
-        return if_required_fields_present, self.has
-
     first_name = CharField(required=False, nullable=True)
     last_name = CharField(required=False, nullable=True)
     email = EmailField(required=False, nullable=True)
@@ -108,6 +88,28 @@ class MethodRequest(RequestParser):
         return self.login == ADMIN_LOGIN
 
 
+def check_required_fields(obj, ctx):
+    combinations = {'phone': 'email',
+                    'first_name': 'last_name',
+                    'gender': 'birthday',
+                    'email': 'phone',
+                    'last_name': 'first_name',
+                    'birthday': 'gender'}
+
+    if_required_fields_present = False
+
+    for field, field_class in obj.fields.items():
+
+        if field_class.value or field_class.value == 0:
+            if combinations.get(field) in obj.has.keys() or field == 'client_ids':
+                if_required_fields_present = True
+            obj.has[field] = field_class.value
+
+    ctx.update({'has': obj.has})
+
+    return if_required_fields_present
+
+
 def check_auth(request):
     if request.login == ADMIN_LOGIN:
         digest = hashlib.sha512((datetime.datetime.now().strftime("%Y%m%d%H") + ADMIN_SALT).encode()).hexdigest()
@@ -118,52 +120,76 @@ def check_auth(request):
     return False
 
 
-def calc_online_score(fields):
-    return get_score(**fields)
+def calc_online_score(fields, store, ctx):
+    store = []
+    phone = fields.get('phone')
+    email = fields.get('email')
+    birthday = fields.get('birthday')
+    gender = fields.get('gender')
+    first_name = fields.get('first_name')
+    last_name = fields.get('last_name')
+    return {"score": get_score(store, phone, email, birthday, gender, first_name, last_name)}
 
 
-def calc_clients_interests(fields):
-    return get_interests(**fields)
+def calc_clients_interests(fields, store, ctx):
+    res = {}
+    clients = fields.get('client_ids')
+    ctx.update({'nclients': len(clients)})
+    for client in clients:
+        res[client] = get_interests(store, ctx)
+    return res
 
 
 def method_handler(request, ctx, store):
     response, code = None, None
 
-    methods = {'online_score': calc_online_score,
-               'clients_interests': calc_clients_interests}
-
     try:
-
+        logging.info('Parsing request')
         modeled_request = MethodRequest(**request['body'])
-        method = modeled_request.values.get('method')
-        login = modeled_request.values.get('login')
-        arguments = modeled_request.values.get('arguments') or {}
+        method = modeled_request.method
+        login = modeled_request.login
+        arguments = modeled_request.arguments or {}
 
-        modeled_arguments = OnlineScoreRequest(**arguments)
+        logging.info('Parsing arguments')
+        online_score_arguments = OnlineScoreRequest(**arguments)
+        client_interest_arguments = ClientsInterestsRequest(**arguments)
+
+        methods = {'online_score': (calc_online_score, online_score_arguments),
+                   'clients_interests': (calc_clients_interests, client_interest_arguments)}
 
         if not modeled_request.values or not login or method not in methods.keys():
             code = INVALID_REQUEST
+            response = ERRORS.get(code)
+            logging.info('Request is invalid or empty, check method or login')
+            return response, code
 
-        else:
-            if not check_auth(modeled_request):
-                code = FORBIDDEN
+        if not check_auth(modeled_request):
+            code = FORBIDDEN
+            response = ERRORS.get(code)
+            logging.info('Authorization failed')
+            return response, code
 
-            else:
-                is_required_fields_present, found_fields = modeled_arguments.check_required_fields()
-                ctx.update({'has': found_fields})
+        is_required_fields_present = check_required_fields(methods[method][1], ctx)
+        if not is_required_fields_present:
+            code = INVALID_REQUEST
+            response = ERRORS.get(code)
+            logging.info('Request does not have required fields')
+            return response, code
 
-                if not is_required_fields_present:
-                    code = INVALID_REQUEST
+        if login == 'admin':
+            code = 200
+            response = {"score": 42}
+            logging.info('It is fun to be an admin')
+            return response, code
 
-                else:
-                    # response = methods[method](**found_fields)
-                    code = OK
+        response = methods[method][0](ctx.get('has'), store, ctx)
+        code = OK
+        logging.info('Scoring is successfully done')
 
-    except ValueError:
+    except ValueError as e:
         code = INVALID_REQUEST
-
-    if code != 200:
-        response = ERRORS.get(code)
+        response = str(e)
+        logging.exception('Validation error')
 
     return response, code
 
