@@ -54,9 +54,13 @@ class RequestParser:
             if isinstance(v, Field):
                 self.fields[k] = v
 
-        for k, v in self.values.items():
-            if k in self.fields.keys():
-                self.fields[k].__set__(self, v)
+        for key, value in self.fields.items():
+            if key in self.values.keys():
+                self.fields[key].__set__(self, self.values[key])
+            else:
+                if self.fields[key].value:
+                    print(self.fields[key].value)
+                    self.fields[key].value = None
 
     def __get__(self, instance, owner):
         return self.values
