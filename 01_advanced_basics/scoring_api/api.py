@@ -59,7 +59,6 @@ class RequestParser:
                 self.fields[key].__set__(self, self.values[key])
             else:
                 if self.fields[key].value:
-                    print(self.fields[key].value)
                     self.fields[key].value = None
 
     def __get__(self, instance, owner):
