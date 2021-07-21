@@ -55,11 +55,9 @@ class RequestParser:
                 self.fields[k] = v
 
         for key, value in self.fields.items():
+            self.fields[key].value = None
             if key in self.values.keys():
                 self.fields[key].__set__(self, self.values[key])
-            else:
-                if self.fields[key].value:
-                    self.fields[key].value = None
 
     def __get__(self, instance, owner):
         return self.values
