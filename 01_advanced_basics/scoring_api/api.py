@@ -57,10 +57,7 @@ class RequestParser:
         for key, value in self.fields.items():
             self.fields[key].value = None
             if key in self.values.keys():
-                self.fields[key].__set__(self, self.values[key])
-
-    def __get__(self, instance, owner):
-        return self.values
+                setattr(self, key, self.values[key])
 
 
 class ClientsInterestsRequest(RequestParser):
