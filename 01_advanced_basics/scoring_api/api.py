@@ -9,6 +9,7 @@ from fields import Field, CharField, EmailField, PhoneField, BirthDayField, Date
 from scoring import get_score, get_interests
 from optparse import OptionParser
 from http.server import HTTPServer, BaseHTTPRequestHandler
+from store import Store
 
 
 logging.basicConfig(filename='script_log.txt',
@@ -119,7 +120,6 @@ def check_auth(request):
 
 
 def calc_online_score(fields, store, ctx):
-    store = []
     phone = fields.get('phone')
     email = fields.get('email')
     birthday = fields.get('birthday')
@@ -134,7 +134,7 @@ def calc_clients_interests(fields, store, ctx):
     clients = fields.get('client_ids')
     ctx.update({'nclients': len(clients)})
     for client in clients:
-        res[client] = get_interests(store, ctx)
+        res[client] = get_interests(store, client)
     return res
 
 
@@ -196,7 +196,7 @@ class MainHTTPHandler(BaseHTTPRequestHandler):
     router = {
         "method": method_handler
     }
-    store = None
+    store = Store()
 
     def get_request_id(self, headers):
         return headers.get('HTTP_X_REQUEST_ID', uuid.uuid4().hex)

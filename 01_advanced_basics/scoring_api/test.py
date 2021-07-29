@@ -4,6 +4,8 @@ import functools
 import unittest
 
 import api
+from fields import CharField, EmailField, PhoneField, BirthDayField, DateField, ArgumentsField, ClientIDsField, GenderField
+from store import Store
 
 
 def cases(cases):
@@ -22,9 +24,10 @@ class TestSuite(unittest.TestCase):
         self.context = {}
         self.headers = {}
         self.settings = {}
+        self.store = Store()
 
     def get_response(self, request):
-        return api.method_handler({"body": request, "headers": self.headers}, self.context, self.settings)
+        return api.method_handler({"body": request, "headers": self.headers}, self.context, self.store)
 
     def set_valid_auth(self, request):
         if request.get("login") == api.ADMIN_LOGIN:
@@ -136,6 +139,76 @@ class TestSuite(unittest.TestCase):
         self.assertTrue(all(v and isinstance(v, list) and all(isinstance(i, str) for i in v)
                         for v in response.values()))
         self.assertEqual(self.context.get("nclients"), len(arguments["client_ids"]))
+
+
+class TestFields(unittest.TestCase):
+
+    def template(self, class_field, val, res):
+        field = class_field()
+        try:
+            field.__set__('value', val)
+        except ValueError:
+            pass
+        self.assertEqual(field.value, res)
+
+    def test_value_valid(self):
+        cases = [
+            (CharField, 'valid_string', 'valid_string'),
+            (ArgumentsField, {'key': 'value'}, {'key': 'value'}),
+            (EmailField, 'test@test.ru', 'test@test.ru'),
+            (PhoneField, 79999999900, 79999999900),
+            (PhoneField, '79999999900', '79999999900'),
+            (BirthDayField, '01.01.2010', '01.01.2010'),
+            (DateField, '12.12.2012', '12.12.2012'),
+            (DateField, '01.01.1001', '01.01.1001'),
+            (GenderField, 0, 0),
+            (GenderField, 1, 1),
+            (GenderField, 2, 2),
+        ]
+
+        for case in cases:
+            with self.subTest(case=case):
+                self.template(*case)
+
+    def test_value_invalid(self):
+        cases = [
+            (CharField, 123, None),
+            (ArgumentsField, ('key', 'value'), None),
+            (EmailField, 'testtest.ru', None),
+            (PhoneField, 89999999900, None),
+            (PhoneField, '99999999', None),
+            (BirthDayField, '01.01.1910', None),
+            (DateField, '32.32.2012', None),
+            (DateField, '01.1001', None),
+            (GenderField, 9, None),
+        ]
+        for case in cases:
+            with self.subTest(case=case):
+                self.template(*case)
+
+    class TestStore(unittest.TestCase):
+        store = Store()
+
+        def test_cache_set(self):
+            self.assertTrue(self.store.cache_set('key1', 'value1'))
+
+        def test_cache_get(self):
+            self.store.cache_set('key2', 'value2')
+            value = self.store.cache_get('key2')
+            self.assertEqual(value, b'value2')
+
+        def test_cache_timeout(self):
+            self.store.cache_set('key3', 'value3', cache_time=2)
+            value = self.store.cache_get('key3')
+            self.assertEqual(value, None)
+
+        def test_set(self):
+            self.assertTrue(self.store.set('key4', 'value4'))
+
+        def test_get(self):
+            self.store.set('key5', 'value5')
+            value = self.store.get('key5')
+            self.assertEqual(value, b'value5')
 
 
 if __name__ == "__main__":
