@@ -2,6 +2,7 @@ import hashlib
 import datetime
 import functools
 import unittest
+import time
 
 import api
 from fields import CharField, EmailField, PhoneField, BirthDayField, DateField, ArgumentsField, ClientIDsField, GenderField
@@ -189,26 +190,21 @@ class TestFields(unittest.TestCase):
     class TestStore(unittest.TestCase):
         store = Store()
 
-        def test_cache_set(self):
-            self.assertTrue(self.store.cache_set('key1', 'value1'))
-
         def test_cache_get(self):
-            self.store.cache_set('key2', 'value2')
-            value = self.store.cache_get('key2')
-            self.assertEqual(value, b'value2')
+            self.store.cache_set('bonnie', 'clyde')
+            value = self.store.cache_get('bonnie')
+            self.assertEqual(value, b'clyde')
 
-        def test_cache_timeout(self):
-            self.store.cache_set('key3', 'value3', cache_time=2)
-            value = self.store.cache_get('key3')
+        def test_timeout(self):
+            self.store.cache_set('beauty', 'beast', cache_time=1)
+            time.sleep(2)
+            value = self.store.cache_get('beauty')
             self.assertEqual(value, None)
 
-        def test_set(self):
-            self.assertTrue(self.store.set('key4', 'value4'))
-
         def test_get(self):
-            self.store.set('key5', 'value5')
-            value = self.store.get('key5')
-            self.assertEqual(value, b'value5')
+            self.store.set('sid', 'nancy')
+            value = self.store.get('sid')
+            self.assertEqual(value, b'nancy')
 
 
 if __name__ == "__main__":

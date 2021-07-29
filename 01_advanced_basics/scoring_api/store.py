@@ -1,5 +1,4 @@
 import redis
-import logging
 
 
 class Store:
