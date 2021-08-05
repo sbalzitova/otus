@@ -45,7 +45,7 @@ GENDERS = {
 }
 
 
-class RequestParser:
+class Request:
     def __init__(self, **kwargs):
         self.fields = {}
         self.values = kwargs
@@ -61,12 +61,12 @@ class RequestParser:
                 setattr(self, key, self.values[key])
 
 
-class ClientsInterestsRequest(RequestParser):
+class ClientsInterestsRequest(Request):
     client_ids = ClientIDsField(required=True)
     date = DateField(required=False, nullable=True)
 
 
-class OnlineScoreRequest(RequestParser):
+class OnlineScoreRequest(Request):
     first_name = CharField(required=False, nullable=True)
     last_name = CharField(required=False, nullable=True)
     email = EmailField(required=False, nullable=True)
@@ -75,7 +75,7 @@ class OnlineScoreRequest(RequestParser):
     gender = GenderField(required=False, nullable=True)
 
 
-class MethodRequest(RequestParser):
+class MethodRequest(Request):
     account = CharField(required=False, nullable=True)
     login = CharField(required=True, nullable=True)
     token = CharField(required=True, nullable=True)
