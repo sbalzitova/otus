@@ -4,12 +4,12 @@ import datetime
 import logging
 import hashlib
 import uuid
-from fields import Field, CharField, EmailField, PhoneField, BirthDayField, DateField, ArgumentsField, \
-    ClientIDsField, GenderField
-from scoring import get_score, get_interests
+from .fields import Field, CharField, EmailField, PhoneField, BirthDayField, DateField, ArgumentsField, \
+    ClientIDsField, GenderField, FieldValueError
+from .scoring import get_score, get_interests
 from optparse import OptionParser
 from http.server import HTTPServer, BaseHTTPRequestHandler
-from store import Store
+from .store import Store
 
 
 logging.basicConfig(filename='script_log.txt',
@@ -119,14 +119,9 @@ def check_auth(request):
     return False
 
 
-def calc_online_score(fields, store, ctx):
-    phone = fields.get('phone')
-    email = fields.get('email')
-    birthday = fields.get('birthday')
-    gender = fields.get('gender')
-    first_name = fields.get('first_name')
-    last_name = fields.get('last_name')
-    return {"score": get_score(store, phone, email, birthday, gender, first_name, last_name)}
+def calc_online_score(f, store, ctx):
+    fields = OnlineScoreRequest(**f)
+    return {"score": get_score(store, fields.phone, fields.email, fields.birthday, fields.gender, fields.first_name, fields.last_name)}
 
 
 def calc_clients_interests(fields, store, ctx):
@@ -184,7 +179,7 @@ def method_handler(request, ctx, store):
         code = OK
         logging.info('Scoring is successfully done')
 
-    except ValueError as e:
+    except FieldValueError as e:
         code = INVALID_REQUEST
         response = str(e)
         logging.exception('Validation error')

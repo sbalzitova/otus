@@ -1,0 +1,864 @@
+2021.08.05 11:54:49,43 root INFO Parsing request
+2021.08.05 11:54:49,43 root INFO Parsing arguments
+2021.08.05 11:54:49,43 root INFO Authorization failed
+2021.08.05 11:54:49,43 root INFO Parsing request
+2021.08.05 11:54:49,43 root INFO Parsing arguments
+2021.08.05 11:54:49,43 root INFO Authorization failed
+2021.08.05 11:54:49,43 root INFO Parsing request
+2021.08.05 11:54:49,43 root INFO Parsing arguments
+2021.08.05 11:54:49,43 root INFO Authorization failed
+2021.08.05 11:54:49,43 root INFO Parsing request
+2021.08.05 11:54:49,44 root INFO Parsing arguments
+2021.08.05 11:54:49,44 root INFO Request is invalid or empty, check method or login
+2021.08.05 11:54:49,44 root INFO Parsing request
+2021.08.05 11:54:49,44 root INFO Parsing arguments
+2021.08.05 11:54:49,44 root INFO Request does not have required fields
+2021.08.05 11:54:49,44 root INFO Parsing request
+2021.08.05 11:54:49,44 root INFO Parsing arguments
+2021.08.05 11:54:49,44 root INFO Request does not have required fields
+2021.08.05 11:54:49,44 root INFO Parsing request
+2021.08.05 11:54:49,44 root INFO Parsing arguments
+2021.08.05 11:54:49,44 root ERROR Validation error
+Traceback (most recent call last):
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 148, in method_handler
+    client_interest_arguments = ClientsInterestsRequest(**arguments)
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 61, in __init__
+    setattr(self, key, self.values[key])
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/fields.py", line 30, in __set__
+    value, type(value), self.__class__.__name__, self.validation_rule))
+src.fields.FieldValueError: Incorrect value [] of type <class 'list'> was about to set to ClientIDsField. Reason: must be a non-empty array of integers
+2021.08.05 11:54:49,45 root INFO Parsing request
+2021.08.05 11:54:49,45 root INFO Parsing arguments
+2021.08.05 11:54:49,45 root ERROR Validation error
+Traceback (most recent call last):
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 148, in method_handler
+    client_interest_arguments = ClientsInterestsRequest(**arguments)
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 61, in __init__
+    setattr(self, key, self.values[key])
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/fields.py", line 30, in __set__
+    value, type(value), self.__class__.__name__, self.validation_rule))
+src.fields.FieldValueError: Incorrect value {1: 2} of type <class 'dict'> was about to set to ClientIDsField. Reason: must be a non-empty array of integers
+2021.08.05 11:54:49,45 root INFO Parsing request
+2021.08.05 11:54:49,45 root INFO Parsing arguments
+2021.08.05 11:54:49,45 root ERROR Validation error
+Traceback (most recent call last):
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 148, in method_handler
+    client_interest_arguments = ClientsInterestsRequest(**arguments)
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 61, in __init__
+    setattr(self, key, self.values[key])
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/fields.py", line 30, in __set__
+    value, type(value), self.__class__.__name__, self.validation_rule))
+src.fields.FieldValueError: Incorrect value ['1', '2'] of type <class 'list'> was about to set to ClientIDsField. Reason: must be a non-empty array of integers
+2021.08.05 11:54:49,45 root INFO Parsing request
+2021.08.05 11:54:49,46 root INFO Parsing arguments
+2021.08.05 11:54:49,46 root ERROR Validation error
+Traceback (most recent call last):
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 148, in method_handler
+    client_interest_arguments = ClientsInterestsRequest(**arguments)
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 61, in __init__
+    setattr(self, key, self.values[key])
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/fields.py", line 30, in __set__
+    value, type(value), self.__class__.__name__, self.validation_rule))
+src.fields.FieldValueError: Incorrect value XXX of type <class 'str'> was about to set to DateField. Reason: must be date with DD.MM.YYYY format
+2021.08.05 11:54:49,46 root INFO Parsing request
+2021.08.05 11:54:49,46 root INFO Parsing arguments
+2021.08.05 11:54:49,46 root INFO Request does not have required fields
+2021.08.05 11:54:49,46 root INFO Parsing request
+2021.08.05 11:54:49,47 root INFO Parsing arguments
+2021.08.05 11:54:49,47 root INFO Request is invalid or empty, check method or login
+2021.08.05 11:54:49,47 root INFO Parsing request
+2021.08.05 11:54:49,47 root INFO Parsing arguments
+2021.08.05 11:54:49,47 root INFO Request is invalid or empty, check method or login
+2021.08.05 11:54:49,47 root INFO Parsing request
+2021.08.05 11:54:49,47 root INFO Parsing arguments
+2021.08.05 11:54:49,47 root INFO Request does not have required fields
+2021.08.05 11:54:49,47 root INFO Parsing request
+2021.08.05 11:54:49,47 root INFO Parsing arguments
+2021.08.05 11:54:49,48 root INFO Request does not have required fields
+2021.08.05 11:54:49,48 root INFO Parsing request
+2021.08.05 11:54:49,48 root INFO Parsing arguments
+2021.08.05 11:54:49,48 root ERROR Validation error
+Traceback (most recent call last):
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 147, in method_handler
+    online_score_arguments = OnlineScoreRequest(**arguments)
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 61, in __init__
+    setattr(self, key, self.values[key])
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/fields.py", line 30, in __set__
+    value, type(value), self.__class__.__name__, self.validation_rule))
+src.fields.FieldValueError: Incorrect value 89175002040 of type <class 'str'> was about to set to PhoneField. Reason: must start with 7 and contain 11 digits
+2021.08.05 11:54:49,48 root INFO Parsing request
+2021.08.05 11:54:49,48 root INFO Parsing arguments
+2021.08.05 11:54:49,48 root ERROR Validation error
+Traceback (most recent call last):
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 147, in method_handler
+    online_score_arguments = OnlineScoreRequest(**arguments)
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 61, in __init__
+    setattr(self, key, self.values[key])
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/fields.py", line 30, in __set__
+    value, type(value), self.__class__.__name__, self.validation_rule))
+src.fields.FieldValueError: Incorrect value stupnikovotus.ru of type <class 'str'> was about to set to EmailField. Reason: must contain @ symbol
+2021.08.05 11:54:49,48 root INFO Parsing request
+2021.08.05 11:54:49,48 root INFO Parsing arguments
+2021.08.05 11:54:49,48 root ERROR Validation error
+Traceback (most recent call last):
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 147, in method_handler
+    online_score_arguments = OnlineScoreRequest(**arguments)
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 61, in __init__
+    setattr(self, key, self.values[key])
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/fields.py", line 30, in __set__
+    value, type(value), self.__class__.__name__, self.validation_rule))
+src.fields.FieldValueError: Incorrect value -1 of type <class 'int'> was about to set to GenderField. Reason: must be an integer of 0 (man), 1 (woman) or 2 (unknown)
+2021.08.05 11:54:49,49 root INFO Parsing request
+2021.08.05 11:54:49,49 root INFO Parsing arguments
+2021.08.05 11:54:49,49 root ERROR Validation error
+Traceback (most recent call last):
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 147, in method_handler
+    online_score_arguments = OnlineScoreRequest(**arguments)
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 61, in __init__
+    setattr(self, key, self.values[key])
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/fields.py", line 30, in __set__
+    value, type(value), self.__class__.__name__, self.validation_rule))
+src.fields.FieldValueError: Incorrect value 1 of type <class 'str'> was about to set to GenderField. Reason: must be an integer of 0 (man), 1 (woman) or 2 (unknown)
+2021.08.05 11:54:49,49 root INFO Parsing request
+2021.08.05 11:54:49,49 root INFO Parsing arguments
+2021.08.05 11:54:49,49 root ERROR Validation error
+Traceback (most recent call last):
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 147, in method_handler
+    online_score_arguments = OnlineScoreRequest(**arguments)
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 61, in __init__
+    setattr(self, key, self.values[key])
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/fields.py", line 30, in __set__
+    value, type(value), self.__class__.__name__, self.validation_rule))
+src.fields.FieldValueError: Incorrect value 01.01.1890 of type <class 'str'> was about to set to BirthDayField. Reason: must be date with DD.MM.YYYY format and not more than 70 years ago
+2021.08.05 11:54:49,49 root INFO Parsing request
+2021.08.05 11:54:49,49 root INFO Parsing arguments
+2021.08.05 11:54:49,49 root ERROR Validation error
+Traceback (most recent call last):
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 147, in method_handler
+    online_score_arguments = OnlineScoreRequest(**arguments)
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 61, in __init__
+    setattr(self, key, self.values[key])
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/fields.py", line 30, in __set__
+    value, type(value), self.__class__.__name__, self.validation_rule))
+src.fields.FieldValueError: Incorrect value XXX of type <class 'str'> was about to set to BirthDayField. Reason: must be date with DD.MM.YYYY format and not more than 70 years ago
+2021.08.05 11:54:49,49 root INFO Parsing request
+2021.08.05 11:54:49,50 root INFO Parsing arguments
+2021.08.05 11:54:49,50 root ERROR Validation error
+Traceback (most recent call last):
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 147, in method_handler
+    online_score_arguments = OnlineScoreRequest(**arguments)
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 61, in __init__
+    setattr(self, key, self.values[key])
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/fields.py", line 30, in __set__
+    value, type(value), self.__class__.__name__, self.validation_rule))
+src.fields.FieldValueError: Incorrect value 1 of type <class 'int'> was about to set to CharField. Reason: must be a string
+2021.08.05 11:54:49,50 root INFO Parsing request
+2021.08.05 11:54:49,50 root INFO Parsing arguments
+2021.08.05 11:54:49,50 root ERROR Validation error
+Traceback (most recent call last):
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 147, in method_handler
+    online_score_arguments = OnlineScoreRequest(**arguments)
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 61, in __init__
+    setattr(self, key, self.values[key])
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/fields.py", line 30, in __set__
+    value, type(value), self.__class__.__name__, self.validation_rule))
+src.fields.FieldValueError: Incorrect value 2 of type <class 'int'> was about to set to CharField. Reason: must be a string
+2021.08.05 11:54:49,50 root INFO Parsing request
+2021.08.05 11:54:49,50 root INFO Parsing arguments
+2021.08.05 11:54:49,50 root INFO Request does not have required fields
+2021.08.05 11:54:49,50 root INFO Parsing request
+2021.08.05 11:54:49,50 root INFO Parsing arguments
+2021.08.05 11:54:49,50 root ERROR Validation error
+Traceback (most recent call last):
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 147, in method_handler
+    online_score_arguments = OnlineScoreRequest(**arguments)
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 61, in __init__
+    setattr(self, key, self.values[key])
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/fields.py", line 30, in __set__
+    value, type(value), self.__class__.__name__, self.validation_rule))
+src.fields.FieldValueError: Incorrect value 2 of type <class 'int'> was about to set to CharField. Reason: must be a string
+2021.08.05 11:54:49,51 root INFO Parsing request
+2021.08.05 11:54:49,51 root INFO Parsing arguments
+2021.08.05 11:54:49,51 root INFO Scoring is successfully done
+2021.08.05 11:54:49,51 root INFO Parsing request
+2021.08.05 11:54:49,51 root INFO Parsing arguments
+2021.08.05 11:54:49,51 root INFO Scoring is successfully done
+2021.08.05 11:54:49,51 root INFO Parsing request
+2021.08.05 11:54:49,51 root INFO Parsing arguments
+2021.08.05 11:54:49,51 root INFO Scoring is successfully done
+2021.08.05 11:54:49,51 root INFO Parsing request
+2021.08.05 11:54:49,51 root INFO Parsing arguments
+2021.08.05 11:54:49,52 root INFO It is fun to be an admin
+2021.08.05 11:54:49,52 root INFO Parsing request
+2021.08.05 11:54:49,52 root INFO Parsing arguments
+2021.08.05 11:54:49,60 root INFO Scoring is successfully done
+2021.08.05 11:54:49,60 root INFO Parsing request
+2021.08.05 11:54:49,60 root INFO Parsing arguments
+2021.08.05 11:54:49,60 root INFO Scoring is successfully done
+2021.08.05 11:54:49,60 root INFO Parsing request
+2021.08.05 11:54:49,61 root INFO Parsing arguments
+2021.08.05 11:54:49,61 root INFO Scoring is successfully done
+2021.08.05 11:54:49,61 root INFO Parsing request
+2021.08.05 11:54:49,61 root INFO Parsing arguments
+2021.08.05 11:54:49,61 root INFO Scoring is successfully done
+2021.08.05 11:54:49,61 root INFO Parsing request
+2021.08.05 11:54:49,61 root INFO Parsing arguments
+2021.08.05 11:54:49,62 root INFO Scoring is successfully done
+2021.08.05 11:54:49,62 root INFO Parsing request
+2021.08.05 11:54:49,62 root INFO Parsing arguments
+2021.08.05 11:54:49,62 root INFO Scoring is successfully done
+2021.08.05 11:54:49,62 root INFO Parsing request
+2021.08.05 11:54:49,62 root INFO Parsing arguments
+2021.08.05 11:54:49,63 root INFO Scoring is successfully done
+2021.08.05 11:54:49,67 root ERROR Error 8 connecting to non_existent:6379. nodename nor servname provided, or not known.
+2021.08.05 11:54:52,77 root ERROR Error 8 connecting to non_existent:6379. nodename nor servname provided, or not known.
+2021.08.05 11:54:55,81 root ERROR Error 8 connecting to non_existent:6379. nodename nor servname provided, or not known.
+2021.08.05 11:54:58,85 root ERROR Error 8 connecting to non_existent:6379. nodename nor servname provided, or not known.
+2021.08.05 11:56:00,342 root INFO Parsing request
+2021.08.05 11:56:00,342 root INFO Parsing arguments
+2021.08.05 11:56:00,342 root INFO Authorization failed
+2021.08.05 11:56:00,342 root INFO Parsing request
+2021.08.05 11:56:00,342 root INFO Parsing arguments
+2021.08.05 11:56:00,342 root INFO Authorization failed
+2021.08.05 11:56:00,342 root INFO Parsing request
+2021.08.05 11:56:00,342 root INFO Parsing arguments
+2021.08.05 11:56:00,342 root INFO Authorization failed
+2021.08.05 11:56:00,343 root INFO Parsing request
+2021.08.05 11:56:00,343 root INFO Parsing arguments
+2021.08.05 11:56:00,343 root INFO Request is invalid or empty, check method or login
+2021.08.05 11:56:00,343 root INFO Parsing request
+2021.08.05 11:56:00,343 root INFO Parsing arguments
+2021.08.05 11:56:00,343 root INFO Request does not have required fields
+2021.08.05 11:56:00,343 root INFO Parsing request
+2021.08.05 11:56:00,343 root INFO Parsing arguments
+2021.08.05 11:56:00,343 root INFO Request does not have required fields
+2021.08.05 11:56:00,343 root INFO Parsing request
+2021.08.05 11:56:00,344 root INFO Parsing arguments
+2021.08.05 11:56:00,344 root ERROR Validation error
+Traceback (most recent call last):
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 148, in method_handler
+    client_interest_arguments = ClientsInterestsRequest(**arguments)
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 61, in __init__
+    setattr(self, key, self.values[key])
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/fields.py", line 30, in __set__
+    value, type(value), self.__class__.__name__, self.validation_rule))
+src.fields.FieldValueError: Incorrect value [] of type <class 'list'> was about to set to ClientIDsField. Reason: must be a non-empty array of integers
+2021.08.05 11:56:00,344 root INFO Parsing request
+2021.08.05 11:56:00,344 root INFO Parsing arguments
+2021.08.05 11:56:00,344 root ERROR Validation error
+Traceback (most recent call last):
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 148, in method_handler
+    client_interest_arguments = ClientsInterestsRequest(**arguments)
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 61, in __init__
+    setattr(self, key, self.values[key])
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/fields.py", line 30, in __set__
+    value, type(value), self.__class__.__name__, self.validation_rule))
+src.fields.FieldValueError: Incorrect value {1: 2} of type <class 'dict'> was about to set to ClientIDsField. Reason: must be a non-empty array of integers
+2021.08.05 11:56:00,344 root INFO Parsing request
+2021.08.05 11:56:00,344 root INFO Parsing arguments
+2021.08.05 11:56:00,345 root ERROR Validation error
+Traceback (most recent call last):
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 148, in method_handler
+    client_interest_arguments = ClientsInterestsRequest(**arguments)
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 61, in __init__
+    setattr(self, key, self.values[key])
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/fields.py", line 30, in __set__
+    value, type(value), self.__class__.__name__, self.validation_rule))
+src.fields.FieldValueError: Incorrect value ['1', '2'] of type <class 'list'> was about to set to ClientIDsField. Reason: must be a non-empty array of integers
+2021.08.05 11:56:00,345 root INFO Parsing request
+2021.08.05 11:56:00,345 root INFO Parsing arguments
+2021.08.05 11:56:00,345 root ERROR Validation error
+Traceback (most recent call last):
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 148, in method_handler
+    client_interest_arguments = ClientsInterestsRequest(**arguments)
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 61, in __init__
+    setattr(self, key, self.values[key])
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/fields.py", line 30, in __set__
+    value, type(value), self.__class__.__name__, self.validation_rule))
+src.fields.FieldValueError: Incorrect value XXX of type <class 'str'> was about to set to DateField. Reason: must be date with DD.MM.YYYY format
+2021.08.05 11:56:00,345 root INFO Parsing request
+2021.08.05 11:56:00,345 root INFO Parsing arguments
+2021.08.05 11:56:00,345 root INFO Request does not have required fields
+2021.08.05 11:56:00,345 root INFO Parsing request
+2021.08.05 11:56:00,346 root INFO Parsing arguments
+2021.08.05 11:56:00,346 root INFO Request is invalid or empty, check method or login
+2021.08.05 11:56:00,346 root INFO Parsing request
+2021.08.05 11:56:00,346 root INFO Parsing arguments
+2021.08.05 11:56:00,346 root INFO Request is invalid or empty, check method or login
+2021.08.05 11:56:00,346 root INFO Parsing request
+2021.08.05 11:56:00,346 root INFO Parsing arguments
+2021.08.05 11:56:00,346 root INFO Request does not have required fields
+2021.08.05 11:56:00,346 root INFO Parsing request
+2021.08.05 11:56:00,346 root INFO Parsing arguments
+2021.08.05 11:56:00,346 root INFO Request does not have required fields
+2021.08.05 11:56:00,346 root INFO Parsing request
+2021.08.05 11:56:00,346 root INFO Parsing arguments
+2021.08.05 11:56:00,346 root ERROR Validation error
+Traceback (most recent call last):
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 147, in method_handler
+    online_score_arguments = OnlineScoreRequest(**arguments)
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 61, in __init__
+    setattr(self, key, self.values[key])
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/fields.py", line 30, in __set__
+    value, type(value), self.__class__.__name__, self.validation_rule))
+src.fields.FieldValueError: Incorrect value 89175002040 of type <class 'str'> was about to set to PhoneField. Reason: must start with 7 and contain 11 digits
+2021.08.05 11:56:00,347 root INFO Parsing request
+2021.08.05 11:56:00,347 root INFO Parsing arguments
+2021.08.05 11:56:00,347 root ERROR Validation error
+Traceback (most recent call last):
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 147, in method_handler
+    online_score_arguments = OnlineScoreRequest(**arguments)
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 61, in __init__
+    setattr(self, key, self.values[key])
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/fields.py", line 30, in __set__
+    value, type(value), self.__class__.__name__, self.validation_rule))
+src.fields.FieldValueError: Incorrect value stupnikovotus.ru of type <class 'str'> was about to set to EmailField. Reason: must contain @ symbol
+2021.08.05 11:56:00,347 root INFO Parsing request
+2021.08.05 11:56:00,347 root INFO Parsing arguments
+2021.08.05 11:56:00,347 root ERROR Validation error
+Traceback (most recent call last):
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 147, in method_handler
+    online_score_arguments = OnlineScoreRequest(**arguments)
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 61, in __init__
+    setattr(self, key, self.values[key])
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/fields.py", line 30, in __set__
+    value, type(value), self.__class__.__name__, self.validation_rule))
+src.fields.FieldValueError: Incorrect value -1 of type <class 'int'> was about to set to GenderField. Reason: must be an integer of 0 (man), 1 (woman) or 2 (unknown)
+2021.08.05 11:56:00,347 root INFO Parsing request
+2021.08.05 11:56:00,347 root INFO Parsing arguments
+2021.08.05 11:56:00,347 root ERROR Validation error
+Traceback (most recent call last):
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 147, in method_handler
+    online_score_arguments = OnlineScoreRequest(**arguments)
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 61, in __init__
+    setattr(self, key, self.values[key])
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/fields.py", line 30, in __set__
+    value, type(value), self.__class__.__name__, self.validation_rule))
+src.fields.FieldValueError: Incorrect value 1 of type <class 'str'> was about to set to GenderField. Reason: must be an integer of 0 (man), 1 (woman) or 2 (unknown)
+2021.08.05 11:56:00,347 root INFO Parsing request
+2021.08.05 11:56:00,347 root INFO Parsing arguments
+2021.08.05 11:56:00,347 root ERROR Validation error
+Traceback (most recent call last):
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 147, in method_handler
+    online_score_arguments = OnlineScoreRequest(**arguments)
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 61, in __init__
+    setattr(self, key, self.values[key])
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/fields.py", line 30, in __set__
+    value, type(value), self.__class__.__name__, self.validation_rule))
+src.fields.FieldValueError: Incorrect value 01.01.1890 of type <class 'str'> was about to set to BirthDayField. Reason: must be date with DD.MM.YYYY format and not more than 70 years ago
+2021.08.05 11:56:00,348 root INFO Parsing request
+2021.08.05 11:56:00,348 root INFO Parsing arguments
+2021.08.05 11:56:00,348 root ERROR Validation error
+Traceback (most recent call last):
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 147, in method_handler
+    online_score_arguments = OnlineScoreRequest(**arguments)
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 61, in __init__
+    setattr(self, key, self.values[key])
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/fields.py", line 30, in __set__
+    value, type(value), self.__class__.__name__, self.validation_rule))
+src.fields.FieldValueError: Incorrect value XXX of type <class 'str'> was about to set to BirthDayField. Reason: must be date with DD.MM.YYYY format and not more than 70 years ago
+2021.08.05 11:56:00,348 root INFO Parsing request
+2021.08.05 11:56:00,348 root INFO Parsing arguments
+2021.08.05 11:56:00,348 root ERROR Validation error
+Traceback (most recent call last):
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 147, in method_handler
+    online_score_arguments = OnlineScoreRequest(**arguments)
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 61, in __init__
+    setattr(self, key, self.values[key])
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/fields.py", line 30, in __set__
+    value, type(value), self.__class__.__name__, self.validation_rule))
+src.fields.FieldValueError: Incorrect value 1 of type <class 'int'> was about to set to CharField. Reason: must be a string
+2021.08.05 11:56:00,348 root INFO Parsing request
+2021.08.05 11:56:00,348 root INFO Parsing arguments
+2021.08.05 11:56:00,348 root ERROR Validation error
+Traceback (most recent call last):
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 147, in method_handler
+    online_score_arguments = OnlineScoreRequest(**arguments)
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 61, in __init__
+    setattr(self, key, self.values[key])
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/fields.py", line 30, in __set__
+    value, type(value), self.__class__.__name__, self.validation_rule))
+src.fields.FieldValueError: Incorrect value 2 of type <class 'int'> was about to set to CharField. Reason: must be a string
+2021.08.05 11:56:00,348 root INFO Parsing request
+2021.08.05 11:56:00,348 root INFO Parsing arguments
+2021.08.05 11:56:00,348 root INFO Request does not have required fields
+2021.08.05 11:56:00,348 root INFO Parsing request
+2021.08.05 11:56:00,349 root INFO Parsing arguments
+2021.08.05 11:56:00,349 root ERROR Validation error
+Traceback (most recent call last):
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 147, in method_handler
+    online_score_arguments = OnlineScoreRequest(**arguments)
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 61, in __init__
+    setattr(self, key, self.values[key])
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/fields.py", line 30, in __set__
+    value, type(value), self.__class__.__name__, self.validation_rule))
+src.fields.FieldValueError: Incorrect value 2 of type <class 'int'> was about to set to CharField. Reason: must be a string
+2021.08.05 11:56:00,349 root INFO Parsing request
+2021.08.05 11:56:00,349 root INFO Parsing arguments
+2021.08.05 11:56:00,349 root INFO Scoring is successfully done
+2021.08.05 11:56:00,349 root INFO Parsing request
+2021.08.05 11:56:00,349 root INFO Parsing arguments
+2021.08.05 11:56:00,349 root INFO Scoring is successfully done
+2021.08.05 11:56:00,349 root INFO Parsing request
+2021.08.05 11:56:00,349 root INFO Parsing arguments
+2021.08.05 11:56:00,349 root INFO Scoring is successfully done
+2021.08.05 11:56:00,350 root INFO Parsing request
+2021.08.05 11:56:00,350 root INFO Parsing arguments
+2021.08.05 11:56:00,350 root INFO It is fun to be an admin
+2021.08.05 11:56:00,350 root INFO Parsing request
+2021.08.05 11:56:00,350 root INFO Parsing arguments
+2021.08.05 11:56:00,358 root INFO Scoring is successfully done
+2021.08.05 11:56:00,358 root INFO Parsing request
+2021.08.05 11:56:00,359 root INFO Parsing arguments
+2021.08.05 11:56:00,359 root INFO Scoring is successfully done
+2021.08.05 11:56:00,359 root INFO Parsing request
+2021.08.05 11:56:00,359 root INFO Parsing arguments
+2021.08.05 11:56:00,359 root INFO Scoring is successfully done
+2021.08.05 11:56:00,359 root INFO Parsing request
+2021.08.05 11:56:00,360 root INFO Parsing arguments
+2021.08.05 11:56:00,360 root INFO Scoring is successfully done
+2021.08.05 11:56:00,360 root INFO Parsing request
+2021.08.05 11:56:00,360 root INFO Parsing arguments
+2021.08.05 11:56:00,360 root INFO Scoring is successfully done
+2021.08.05 11:56:00,360 root INFO Parsing request
+2021.08.05 11:56:00,361 root INFO Parsing arguments
+2021.08.05 11:56:00,361 root INFO Scoring is successfully done
+2021.08.05 11:56:00,361 root INFO Parsing request
+2021.08.05 11:56:00,361 root INFO Parsing arguments
+2021.08.05 11:56:00,361 root INFO Scoring is successfully done
+2021.08.05 11:56:00,398 root ERROR Error 8 connecting to non_existent:6379. nodename nor servname provided, or not known.
+2021.08.05 11:56:03,407 root ERROR Error 8 connecting to non_existent:6379. nodename nor servname provided, or not known.
+2021.08.05 11:56:06,411 root ERROR Error 8 connecting to non_existent:6379. nodename nor servname provided, or not known.
+2021.08.05 11:56:09,415 root ERROR Error 8 connecting to non_existent:6379. nodename nor servname provided, or not known.
+2021.08.05 11:56:29,917 root INFO Parsing request
+2021.08.05 11:56:29,917 root INFO Parsing arguments
+2021.08.05 11:56:29,918 root INFO Authorization failed
+2021.08.05 11:56:29,918 root INFO Parsing request
+2021.08.05 11:56:29,918 root INFO Parsing arguments
+2021.08.05 11:56:29,918 root INFO Authorization failed
+2021.08.05 11:56:29,918 root INFO Parsing request
+2021.08.05 11:56:29,918 root INFO Parsing arguments
+2021.08.05 11:56:29,918 root INFO Authorization failed
+2021.08.05 11:56:29,918 root INFO Parsing request
+2021.08.05 11:56:29,918 root INFO Parsing arguments
+2021.08.05 11:56:29,918 root INFO Request is invalid or empty, check method or login
+2021.08.05 11:56:29,919 root INFO Parsing request
+2021.08.05 11:56:29,919 root INFO Parsing arguments
+2021.08.05 11:56:29,919 root INFO Request does not have required fields
+2021.08.05 11:56:29,919 root INFO Parsing request
+2021.08.05 11:56:29,919 root INFO Parsing arguments
+2021.08.05 11:56:29,919 root INFO Request does not have required fields
+2021.08.05 11:56:29,919 root INFO Parsing request
+2021.08.05 11:56:29,919 root INFO Parsing arguments
+2021.08.05 11:56:29,919 root ERROR Validation error
+Traceback (most recent call last):
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 148, in method_handler
+    client_interest_arguments = ClientsInterestsRequest(**arguments)
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 61, in __init__
+    setattr(self, key, self.values[key])
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/fields.py", line 30, in __set__
+    value, type(value), self.__class__.__name__, self.validation_rule))
+src.fields.FieldValueError: Incorrect value [] of type <class 'list'> was about to set to ClientIDsField. Reason: must be a non-empty array of integers
+2021.08.05 11:56:29,920 root INFO Parsing request
+2021.08.05 11:56:29,920 root INFO Parsing arguments
+2021.08.05 11:56:29,920 root ERROR Validation error
+Traceback (most recent call last):
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 148, in method_handler
+    client_interest_arguments = ClientsInterestsRequest(**arguments)
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 61, in __init__
+    setattr(self, key, self.values[key])
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/fields.py", line 30, in __set__
+    value, type(value), self.__class__.__name__, self.validation_rule))
+src.fields.FieldValueError: Incorrect value {1: 2} of type <class 'dict'> was about to set to ClientIDsField. Reason: must be a non-empty array of integers
+2021.08.05 11:56:29,920 root INFO Parsing request
+2021.08.05 11:56:29,920 root INFO Parsing arguments
+2021.08.05 11:56:29,920 root ERROR Validation error
+Traceback (most recent call last):
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 148, in method_handler
+    client_interest_arguments = ClientsInterestsRequest(**arguments)
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 61, in __init__
+    setattr(self, key, self.values[key])
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/fields.py", line 30, in __set__
+    value, type(value), self.__class__.__name__, self.validation_rule))
+src.fields.FieldValueError: Incorrect value ['1', '2'] of type <class 'list'> was about to set to ClientIDsField. Reason: must be a non-empty array of integers
+2021.08.05 11:56:29,920 root INFO Parsing request
+2021.08.05 11:56:29,920 root INFO Parsing arguments
+2021.08.05 11:56:29,920 root ERROR Validation error
+Traceback (most recent call last):
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 148, in method_handler
+    client_interest_arguments = ClientsInterestsRequest(**arguments)
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 61, in __init__
+    setattr(self, key, self.values[key])
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/fields.py", line 30, in __set__
+    value, type(value), self.__class__.__name__, self.validation_rule))
+src.fields.FieldValueError: Incorrect value XXX of type <class 'str'> was about to set to DateField. Reason: must be date with DD.MM.YYYY format
+2021.08.05 11:56:29,921 root INFO Parsing request
+2021.08.05 11:56:29,921 root INFO Parsing arguments
+2021.08.05 11:56:29,921 root INFO Request does not have required fields
+2021.08.05 11:56:29,921 root INFO Parsing request
+2021.08.05 11:56:29,921 root INFO Parsing arguments
+2021.08.05 11:56:29,921 root INFO Request is invalid or empty, check method or login
+2021.08.05 11:56:29,921 root INFO Parsing request
+2021.08.05 11:56:29,921 root INFO Parsing arguments
+2021.08.05 11:56:29,921 root INFO Request is invalid or empty, check method or login
+2021.08.05 11:56:29,921 root INFO Parsing request
+2021.08.05 11:56:29,921 root INFO Parsing arguments
+2021.08.05 11:56:29,921 root INFO Request does not have required fields
+2021.08.05 11:56:29,922 root INFO Parsing request
+2021.08.05 11:56:29,922 root INFO Parsing arguments
+2021.08.05 11:56:29,922 root INFO Request does not have required fields
+2021.08.05 11:56:29,922 root INFO Parsing request
+2021.08.05 11:56:29,922 root INFO Parsing arguments
+2021.08.05 11:56:29,922 root ERROR Validation error
+Traceback (most recent call last):
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 147, in method_handler
+    online_score_arguments = OnlineScoreRequest(**arguments)
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 61, in __init__
+    setattr(self, key, self.values[key])
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/fields.py", line 30, in __set__
+    value, type(value), self.__class__.__name__, self.validation_rule))
+src.fields.FieldValueError: Incorrect value 89175002040 of type <class 'str'> was about to set to PhoneField. Reason: must start with 7 and contain 11 digits
+2021.08.05 11:56:29,922 root INFO Parsing request
+2021.08.05 11:56:29,922 root INFO Parsing arguments
+2021.08.05 11:56:29,922 root ERROR Validation error
+Traceback (most recent call last):
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 147, in method_handler
+    online_score_arguments = OnlineScoreRequest(**arguments)
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 61, in __init__
+    setattr(self, key, self.values[key])
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/fields.py", line 30, in __set__
+    value, type(value), self.__class__.__name__, self.validation_rule))
+src.fields.FieldValueError: Incorrect value stupnikovotus.ru of type <class 'str'> was about to set to EmailField. Reason: must contain @ symbol
+2021.08.05 11:56:29,922 root INFO Parsing request
+2021.08.05 11:56:29,922 root INFO Parsing arguments
+2021.08.05 11:56:29,922 root ERROR Validation error
+Traceback (most recent call last):
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 147, in method_handler
+    online_score_arguments = OnlineScoreRequest(**arguments)
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 61, in __init__
+    setattr(self, key, self.values[key])
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/fields.py", line 30, in __set__
+    value, type(value), self.__class__.__name__, self.validation_rule))
+src.fields.FieldValueError: Incorrect value -1 of type <class 'int'> was about to set to GenderField. Reason: must be an integer of 0 (man), 1 (woman) or 2 (unknown)
+2021.08.05 11:56:29,922 root INFO Parsing request
+2021.08.05 11:56:29,922 root INFO Parsing arguments
+2021.08.05 11:56:29,923 root ERROR Validation error
+Traceback (most recent call last):
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 147, in method_handler
+    online_score_arguments = OnlineScoreRequest(**arguments)
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 61, in __init__
+    setattr(self, key, self.values[key])
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/fields.py", line 30, in __set__
+    value, type(value), self.__class__.__name__, self.validation_rule))
+src.fields.FieldValueError: Incorrect value 1 of type <class 'str'> was about to set to GenderField. Reason: must be an integer of 0 (man), 1 (woman) or 2 (unknown)
+2021.08.05 11:56:29,923 root INFO Parsing request
+2021.08.05 11:56:29,923 root INFO Parsing arguments
+2021.08.05 11:56:29,923 root ERROR Validation error
+Traceback (most recent call last):
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 147, in method_handler
+    online_score_arguments = OnlineScoreRequest(**arguments)
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 61, in __init__
+    setattr(self, key, self.values[key])
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/fields.py", line 30, in __set__
+    value, type(value), self.__class__.__name__, self.validation_rule))
+src.fields.FieldValueError: Incorrect value 01.01.1890 of type <class 'str'> was about to set to BirthDayField. Reason: must be date with DD.MM.YYYY format and not more than 70 years ago
+2021.08.05 11:56:29,923 root INFO Parsing request
+2021.08.05 11:56:29,923 root INFO Parsing arguments
+2021.08.05 11:56:29,923 root ERROR Validation error
+Traceback (most recent call last):
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 147, in method_handler
+    online_score_arguments = OnlineScoreRequest(**arguments)
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 61, in __init__
+    setattr(self, key, self.values[key])
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/fields.py", line 30, in __set__
+    value, type(value), self.__class__.__name__, self.validation_rule))
+src.fields.FieldValueError: Incorrect value XXX of type <class 'str'> was about to set to BirthDayField. Reason: must be date with DD.MM.YYYY format and not more than 70 years ago
+2021.08.05 11:56:29,923 root INFO Parsing request
+2021.08.05 11:56:29,923 root INFO Parsing arguments
+2021.08.05 11:56:29,923 root ERROR Validation error
+Traceback (most recent call last):
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 147, in method_handler
+    online_score_arguments = OnlineScoreRequest(**arguments)
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 61, in __init__
+    setattr(self, key, self.values[key])
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/fields.py", line 30, in __set__
+    value, type(value), self.__class__.__name__, self.validation_rule))
+src.fields.FieldValueError: Incorrect value 1 of type <class 'int'> was about to set to CharField. Reason: must be a string
+2021.08.05 11:56:29,924 root INFO Parsing request
+2021.08.05 11:56:29,924 root INFO Parsing arguments
+2021.08.05 11:56:29,924 root ERROR Validation error
+Traceback (most recent call last):
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 147, in method_handler
+    online_score_arguments = OnlineScoreRequest(**arguments)
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 61, in __init__
+    setattr(self, key, self.values[key])
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/fields.py", line 30, in __set__
+    value, type(value), self.__class__.__name__, self.validation_rule))
+src.fields.FieldValueError: Incorrect value 2 of type <class 'int'> was about to set to CharField. Reason: must be a string
+2021.08.05 11:56:29,924 root INFO Parsing request
+2021.08.05 11:56:29,924 root INFO Parsing arguments
+2021.08.05 11:56:29,924 root INFO Request does not have required fields
+2021.08.05 11:56:29,924 root INFO Parsing request
+2021.08.05 11:56:29,924 root INFO Parsing arguments
+2021.08.05 11:56:29,924 root ERROR Validation error
+Traceback (most recent call last):
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 147, in method_handler
+    online_score_arguments = OnlineScoreRequest(**arguments)
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 61, in __init__
+    setattr(self, key, self.values[key])
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/fields.py", line 30, in __set__
+    value, type(value), self.__class__.__name__, self.validation_rule))
+src.fields.FieldValueError: Incorrect value 2 of type <class 'int'> was about to set to CharField. Reason: must be a string
+2021.08.05 11:56:29,924 root INFO Parsing request
+2021.08.05 11:56:29,925 root INFO Parsing arguments
+2021.08.05 11:56:29,925 root INFO Scoring is successfully done
+2021.08.05 11:56:29,925 root INFO Parsing request
+2021.08.05 11:56:29,925 root INFO Parsing arguments
+2021.08.05 11:56:29,925 root INFO Scoring is successfully done
+2021.08.05 11:56:29,925 root INFO Parsing request
+2021.08.05 11:56:29,925 root INFO Parsing arguments
+2021.08.05 11:56:29,925 root INFO Scoring is successfully done
+2021.08.05 11:56:29,925 root INFO Parsing request
+2021.08.05 11:56:29,925 root INFO Parsing arguments
+2021.08.05 11:56:29,925 root INFO It is fun to be an admin
+2021.08.05 11:56:29,926 root INFO Parsing request
+2021.08.05 11:56:29,926 root INFO Parsing arguments
+2021.08.05 11:56:29,934 root INFO Scoring is successfully done
+2021.08.05 11:56:29,934 root INFO Parsing request
+2021.08.05 11:56:29,934 root INFO Parsing arguments
+2021.08.05 11:56:29,934 root INFO Scoring is successfully done
+2021.08.05 11:56:29,934 root INFO Parsing request
+2021.08.05 11:56:29,934 root INFO Parsing arguments
+2021.08.05 11:56:29,935 root INFO Scoring is successfully done
+2021.08.05 11:56:29,935 root INFO Parsing request
+2021.08.05 11:56:29,935 root INFO Parsing arguments
+2021.08.05 11:56:29,935 root INFO Scoring is successfully done
+2021.08.05 11:56:29,935 root INFO Parsing request
+2021.08.05 11:56:29,935 root INFO Parsing arguments
+2021.08.05 11:56:29,936 root INFO Scoring is successfully done
+2021.08.05 11:56:29,936 root INFO Parsing request
+2021.08.05 11:56:29,936 root INFO Parsing arguments
+2021.08.05 11:56:29,936 root INFO Scoring is successfully done
+2021.08.05 11:56:29,936 root INFO Parsing request
+2021.08.05 11:56:29,936 root INFO Parsing arguments
+2021.08.05 11:56:29,937 root INFO Scoring is successfully done
+2021.08.05 11:56:29,942 root ERROR Error 8 connecting to non_existent:6379. nodename nor servname provided, or not known.
+2021.08.05 11:56:32,949 root ERROR Error 8 connecting to non_existent:6379. nodename nor servname provided, or not known.
+2021.08.05 11:56:35,969 root ERROR Error 8 connecting to non_existent:6379. nodename nor servname provided, or not known.
+2021.08.05 11:56:38,981 root ERROR Error 8 connecting to non_existent:6379. nodename nor servname provided, or not known.
+2021.08.05 11:57:20,578 root INFO Parsing request
+2021.08.05 11:57:20,578 root INFO Parsing arguments
+2021.08.05 11:57:20,578 root INFO Authorization failed
+2021.08.05 11:57:20,578 root INFO Parsing request
+2021.08.05 11:57:20,578 root INFO Parsing arguments
+2021.08.05 11:57:20,579 root INFO Authorization failed
+2021.08.05 11:57:20,579 root INFO Parsing request
+2021.08.05 11:57:20,579 root INFO Parsing arguments
+2021.08.05 11:57:20,579 root INFO Authorization failed
+2021.08.05 11:57:20,579 root INFO Parsing request
+2021.08.05 11:57:20,579 root INFO Parsing arguments
+2021.08.05 11:57:20,579 root INFO Request is invalid or empty, check method or login
+2021.08.05 11:57:20,579 root INFO Parsing request
+2021.08.05 11:57:20,580 root INFO Parsing arguments
+2021.08.05 11:57:20,580 root INFO Request does not have required fields
+2021.08.05 11:57:20,580 root INFO Parsing request
+2021.08.05 11:57:20,580 root INFO Parsing arguments
+2021.08.05 11:57:20,580 root INFO Request does not have required fields
+2021.08.05 11:57:20,580 root INFO Parsing request
+2021.08.05 11:57:20,580 root INFO Parsing arguments
+2021.08.05 11:57:20,580 root ERROR Validation error
+Traceback (most recent call last):
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 148, in method_handler
+    client_interest_arguments = ClientsInterestsRequest(**arguments)
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 61, in __init__
+    setattr(self, key, self.values[key])
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/fields.py", line 30, in __set__
+    value, type(value), self.__class__.__name__, self.validation_rule))
+src.fields.FieldValueError: Incorrect value [] of type <class 'list'> was about to set to ClientIDsField. Reason: must be a non-empty array of integers
+2021.08.05 11:57:20,581 root INFO Parsing request
+2021.08.05 11:57:20,581 root INFO Parsing arguments
+2021.08.05 11:57:20,581 root ERROR Validation error
+Traceback (most recent call last):
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 148, in method_handler
+    client_interest_arguments = ClientsInterestsRequest(**arguments)
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 61, in __init__
+    setattr(self, key, self.values[key])
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/fields.py", line 30, in __set__
+    value, type(value), self.__class__.__name__, self.validation_rule))
+src.fields.FieldValueError: Incorrect value {1: 2} of type <class 'dict'> was about to set to ClientIDsField. Reason: must be a non-empty array of integers
+2021.08.05 11:57:20,581 root INFO Parsing request
+2021.08.05 11:57:20,581 root INFO Parsing arguments
+2021.08.05 11:57:20,581 root ERROR Validation error
+Traceback (most recent call last):
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 148, in method_handler
+    client_interest_arguments = ClientsInterestsRequest(**arguments)
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 61, in __init__
+    setattr(self, key, self.values[key])
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/fields.py", line 30, in __set__
+    value, type(value), self.__class__.__name__, self.validation_rule))
+src.fields.FieldValueError: Incorrect value ['1', '2'] of type <class 'list'> was about to set to ClientIDsField. Reason: must be a non-empty array of integers
+2021.08.05 11:57:20,581 root INFO Parsing request
+2021.08.05 11:57:20,581 root INFO Parsing arguments
+2021.08.05 11:57:20,581 root ERROR Validation error
+Traceback (most recent call last):
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 148, in method_handler
+    client_interest_arguments = ClientsInterestsRequest(**arguments)
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 61, in __init__
+    setattr(self, key, self.values[key])
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/fields.py", line 30, in __set__
+    value, type(value), self.__class__.__name__, self.validation_rule))
+src.fields.FieldValueError: Incorrect value XXX of type <class 'str'> was about to set to DateField. Reason: must be date with DD.MM.YYYY format
+2021.08.05 11:57:20,582 root INFO Parsing request
+2021.08.05 11:57:20,582 root INFO Parsing arguments
+2021.08.05 11:57:20,582 root INFO Request does not have required fields
+2021.08.05 11:57:20,582 root INFO Parsing request
+2021.08.05 11:57:20,582 root INFO Parsing arguments
+2021.08.05 11:57:20,582 root INFO Request is invalid or empty, check method or login
+2021.08.05 11:57:20,582 root INFO Parsing request
+2021.08.05 11:57:20,582 root INFO Parsing arguments
+2021.08.05 11:57:20,582 root INFO Request is invalid or empty, check method or login
+2021.08.05 11:57:20,582 root INFO Parsing request
+2021.08.05 11:57:20,582 root INFO Parsing arguments
+2021.08.05 11:57:20,582 root INFO Request does not have required fields
+2021.08.05 11:57:20,583 root INFO Parsing request
+2021.08.05 11:57:20,583 root INFO Parsing arguments
+2021.08.05 11:57:20,583 root INFO Request does not have required fields
+2021.08.05 11:57:20,583 root INFO Parsing request
+2021.08.05 11:57:20,583 root INFO Parsing arguments
+2021.08.05 11:57:20,583 root ERROR Validation error
+Traceback (most recent call last):
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 147, in method_handler
+    online_score_arguments = OnlineScoreRequest(**arguments)
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 61, in __init__
+    setattr(self, key, self.values[key])
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/fields.py", line 30, in __set__
+    value, type(value), self.__class__.__name__, self.validation_rule))
+src.fields.FieldValueError: Incorrect value 89175002040 of type <class 'str'> was about to set to PhoneField. Reason: must start with 7 and contain 11 digits
+2021.08.05 11:57:20,583 root INFO Parsing request
+2021.08.05 11:57:20,583 root INFO Parsing arguments
+2021.08.05 11:57:20,583 root ERROR Validation error
+Traceback (most recent call last):
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 147, in method_handler
+    online_score_arguments = OnlineScoreRequest(**arguments)
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 61, in __init__
+    setattr(self, key, self.values[key])
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/fields.py", line 30, in __set__
+    value, type(value), self.__class__.__name__, self.validation_rule))
+src.fields.FieldValueError: Incorrect value stupnikovotus.ru of type <class 'str'> was about to set to EmailField. Reason: must contain @ symbol
+2021.08.05 11:57:20,583 root INFO Parsing request
+2021.08.05 11:57:20,583 root INFO Parsing arguments
+2021.08.05 11:57:20,583 root ERROR Validation error
+Traceback (most recent call last):
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 147, in method_handler
+    online_score_arguments = OnlineScoreRequest(**arguments)
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 61, in __init__
+    setattr(self, key, self.values[key])
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/fields.py", line 30, in __set__
+    value, type(value), self.__class__.__name__, self.validation_rule))
+src.fields.FieldValueError: Incorrect value -1 of type <class 'int'> was about to set to GenderField. Reason: must be an integer of 0 (man), 1 (woman) or 2 (unknown)
+2021.08.05 11:57:20,583 root INFO Parsing request
+2021.08.05 11:57:20,584 root INFO Parsing arguments
+2021.08.05 11:57:20,584 root ERROR Validation error
+Traceback (most recent call last):
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 147, in method_handler
+    online_score_arguments = OnlineScoreRequest(**arguments)
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 61, in __init__
+    setattr(self, key, self.values[key])
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/fields.py", line 30, in __set__
+    value, type(value), self.__class__.__name__, self.validation_rule))
+src.fields.FieldValueError: Incorrect value 1 of type <class 'str'> was about to set to GenderField. Reason: must be an integer of 0 (man), 1 (woman) or 2 (unknown)
+2021.08.05 11:57:20,584 root INFO Parsing request
+2021.08.05 11:57:20,584 root INFO Parsing arguments
+2021.08.05 11:57:20,584 root ERROR Validation error
+Traceback (most recent call last):
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 147, in method_handler
+    online_score_arguments = OnlineScoreRequest(**arguments)
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 61, in __init__
+    setattr(self, key, self.values[key])
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/fields.py", line 30, in __set__
+    value, type(value), self.__class__.__name__, self.validation_rule))
+src.fields.FieldValueError: Incorrect value 01.01.1890 of type <class 'str'> was about to set to BirthDayField. Reason: must be date with DD.MM.YYYY format and not more than 70 years ago
+2021.08.05 11:57:20,584 root INFO Parsing request
+2021.08.05 11:57:20,584 root INFO Parsing arguments
+2021.08.05 11:57:20,584 root ERROR Validation error
+Traceback (most recent call last):
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 147, in method_handler
+    online_score_arguments = OnlineScoreRequest(**arguments)
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 61, in __init__
+    setattr(self, key, self.values[key])
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/fields.py", line 30, in __set__
+    value, type(value), self.__class__.__name__, self.validation_rule))
+src.fields.FieldValueError: Incorrect value XXX of type <class 'str'> was about to set to BirthDayField. Reason: must be date with DD.MM.YYYY format and not more than 70 years ago
+2021.08.05 11:57:20,584 root INFO Parsing request
+2021.08.05 11:57:20,584 root INFO Parsing arguments
+2021.08.05 11:57:20,584 root ERROR Validation error
+Traceback (most recent call last):
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 147, in method_handler
+    online_score_arguments = OnlineScoreRequest(**arguments)
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 61, in __init__
+    setattr(self, key, self.values[key])
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/fields.py", line 30, in __set__
+    value, type(value), self.__class__.__name__, self.validation_rule))
+src.fields.FieldValueError: Incorrect value 1 of type <class 'int'> was about to set to CharField. Reason: must be a string
+2021.08.05 11:57:20,584 root INFO Parsing request
+2021.08.05 11:57:20,585 root INFO Parsing arguments
+2021.08.05 11:57:20,585 root ERROR Validation error
+Traceback (most recent call last):
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 147, in method_handler
+    online_score_arguments = OnlineScoreRequest(**arguments)
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 61, in __init__
+    setattr(self, key, self.values[key])
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/fields.py", line 30, in __set__
+    value, type(value), self.__class__.__name__, self.validation_rule))
+src.fields.FieldValueError: Incorrect value 2 of type <class 'int'> was about to set to CharField. Reason: must be a string
+2021.08.05 11:57:20,585 root INFO Parsing request
+2021.08.05 11:57:20,585 root INFO Parsing arguments
+2021.08.05 11:57:20,585 root INFO Request does not have required fields
+2021.08.05 11:57:20,585 root INFO Parsing request
+2021.08.05 11:57:20,585 root INFO Parsing arguments
+2021.08.05 11:57:20,585 root ERROR Validation error
+Traceback (most recent call last):
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 147, in method_handler
+    online_score_arguments = OnlineScoreRequest(**arguments)
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/api.py", line 61, in __init__
+    setattr(self, key, self.values[key])
+  File "/Users/sbalzitova/Documents/stuff/otus/01_advanced_basics/scoring_api/src/fields.py", line 30, in __set__
+    value, type(value), self.__class__.__name__, self.validation_rule))
+src.fields.FieldValueError: Incorrect value 2 of type <class 'int'> was about to set to CharField. Reason: must be a string
+2021.08.05 11:57:20,585 root INFO Parsing request
+2021.08.05 11:57:20,585 root INFO Parsing arguments
+2021.08.05 11:57:20,585 root INFO Scoring is successfully done
+2021.08.05 11:57:20,586 root INFO Parsing request
+2021.08.05 11:57:20,586 root INFO Parsing arguments
+2021.08.05 11:57:20,586 root INFO Scoring is successfully done
+2021.08.05 11:57:20,586 root INFO Parsing request
+2021.08.05 11:57:20,586 root INFO Parsing arguments
+2021.08.05 11:57:20,586 root INFO Scoring is successfully done
+2021.08.05 11:57:20,586 root INFO Parsing request
+2021.08.05 11:57:20,586 root INFO Parsing arguments
+2021.08.05 11:57:20,586 root INFO It is fun to be an admin
+2021.08.05 11:57:20,586 root INFO Parsing request
+2021.08.05 11:57:20,587 root INFO Parsing arguments
+2021.08.05 11:57:20,596 root INFO Scoring is successfully done
+2021.08.05 11:57:20,596 root INFO Parsing request
+2021.08.05 11:57:20,596 root INFO Parsing arguments
+2021.08.05 11:57:20,596 root INFO Scoring is successfully done
+2021.08.05 11:57:20,596 root INFO Parsing request
+2021.08.05 11:57:20,597 root INFO Parsing arguments
+2021.08.05 11:57:20,597 root INFO Scoring is successfully done
+2021.08.05 11:57:20,597 root INFO Parsing request
+2021.08.05 11:57:20,597 root INFO Parsing arguments
+2021.08.05 11:57:20,598 root INFO Scoring is successfully done
+2021.08.05 11:57:20,598 root INFO Parsing request
+2021.08.05 11:57:20,598 root INFO Parsing arguments
+2021.08.05 11:57:20,598 root INFO Scoring is successfully done
+2021.08.05 11:57:20,598 root INFO Parsing request
+2021.08.05 11:57:20,598 root INFO Parsing arguments
+2021.08.05 11:57:20,598 root INFO Scoring is successfully done
+2021.08.05 11:57:20,598 root INFO Parsing request
+2021.08.05 11:57:20,598 root INFO Parsing arguments
+2021.08.05 11:57:20,599 root INFO Scoring is successfully done
+2021.08.05 11:57:20,663 root ERROR Error 8 connecting to non_existent:6379. nodename nor servname provided, or not known.
+2021.08.05 11:57:23,669 root ERROR Error 8 connecting to non_existent:6379. nodename nor servname provided, or not known.
+2021.08.05 11:57:26,677 root ERROR Error 8 connecting to non_existent:6379. nodename nor servname provided, or not known.
+2021.08.05 11:57:29,685 root ERROR Error 8 connecting to non_existent:6379. nodename nor servname provided, or not known.

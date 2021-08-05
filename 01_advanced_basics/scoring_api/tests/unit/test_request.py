@@ -2,11 +2,9 @@ import hashlib
 import datetime
 import functools
 import unittest
-import time
 
-import api
-from fields import CharField, EmailField, PhoneField, BirthDayField, DateField, ArgumentsField, ClientIDsField, GenderField
-from store import Store
+import src.api as api
+from src.store import Store
 
 
 def cases(cases):
@@ -140,71 +138,6 @@ class TestSuite(unittest.TestCase):
         self.assertTrue(all(v and isinstance(v, list) and all(isinstance(i, str) for i in v)
                         for v in response.values()))
         self.assertEqual(self.context.get("nclients"), len(arguments["client_ids"]))
-
-
-class TestFields(unittest.TestCase):
-
-    def template(self, class_field, val, res):
-        field = class_field()
-        try:
-            field.__set__('value', val)
-        except ValueError:
-            pass
-        self.assertEqual(field.value, res)
-
-    def test_value_valid(self):
-        cases = [
-            (CharField, 'valid_string', 'valid_string'),
-            (ArgumentsField, {'key': 'value'}, {'key': 'value'}),
-            (EmailField, 'test@test.ru', 'test@test.ru'),
-            (PhoneField, 79999999900, 79999999900),
-            (PhoneField, '79999999900', '79999999900'),
-            (BirthDayField, '01.01.2010', '01.01.2010'),
-            (DateField, '12.12.2012', '12.12.2012'),
-            (DateField, '01.01.1001', '01.01.1001'),
-            (GenderField, 0, 0),
-            (GenderField, 1, 1),
-            (GenderField, 2, 2),
-        ]
-
-        for case in cases:
-            with self.subTest(case=case):
-                self.template(*case)
-
-    def test_value_invalid(self):
-        cases = [
-            (CharField, 123, None),
-            (ArgumentsField, ('key', 'value'), None),
-            (EmailField, 'testtest.ru', None),
-            (PhoneField, 89999999900, None),
-            (PhoneField, '99999999', None),
-            (BirthDayField, '01.01.1910', None),
-            (DateField, '32.32.2012', None),
-            (DateField, '01.1001', None),
-            (GenderField, 9, None),
-        ]
-        for case in cases:
-            with self.subTest(case=case):
-                self.template(*case)
-
-    class TestStore(unittest.TestCase):
-        store = Store()
-
-        def test_cache_get(self):
-            self.store.cache_set('bonnie', 'clyde')
-            value = self.store.cache_get('bonnie')
-            self.assertEqual(value, b'clyde')
-
-        def test_timeout(self):
-            self.store.cache_set('beauty', 'beast', cache_time=1)
-            time.sleep(2)
-            value = self.store.cache_get('beauty')
-            self.assertEqual(value, None)
-
-        def test_get(self):
-            self.store.set('sid', 'nancy')
-            value = self.store.get('sid')
-            self.assertEqual(value, b'nancy')
 
 
 if __name__ == "__main__":
