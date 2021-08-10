@@ -1,17 +1,21 @@
 import unittest
 from src.fields import CharField, EmailField, PhoneField, BirthDayField, DateField, ArgumentsField, ClientIDsField, \
     GenderField, FieldValueError
+from src.api import Request
 
 
 class Validation(unittest.TestCase):
-
     def template(self, class_field, val, res):
-        field = class_field()
+        req = Request()
+        req.field = class_field()
+        req.values['test_field'] = val
+        req.fields['test_field'] = class_field()
         try:
-            field.__set__('value', val)
+            req.field.__set__(req, val)
         except FieldValueError:
             pass
-        self.assertEqual(field.value, res)
+        key = req.fields['test_field'].value
+        self.assertEqual(key, res)
 
 
 class TestCharFieldValidation(Validation):

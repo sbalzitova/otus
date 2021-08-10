@@ -24,7 +24,11 @@ class Field:
         if value is None and (self.required or self.nullable):
             raise FieldValueError('{} cannot be null'.format(self.__class__.__name__))
         elif self.is_valid(value):
-            self.value = value
+            field = None
+            for k, v in instance.values.items():
+                if v == value:
+                    field = k
+            instance.fields[field].value = value
         else:
             raise FieldValueError('Incorrect value {} of type {} was about to set to {}. Reason: {}'.format(
                 value, type(value), self.__class__.__name__, self.validation_rule))
